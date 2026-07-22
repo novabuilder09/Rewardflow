@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EarnHub — Turn spare minutes into earnings</title>
+<style>
+  :root{
+    --navy:#0B2545;
+    --blue:#1D4ED8;
+    --blue-light:#3B82F6;
+    --sky:#EAF2FF;
+    --white:#FFFFFF;
+    --ink:#122036;
+    --muted:#5B6B82;
+    --green:#0F9D58;
+    --border:#DCE6F5;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:'Segoe UI', Arial, sans-serif;
+    color:var(--ink);
+    background:var(--white);
+  }
+  a{text-decoration:none;color:inherit;}
+
+  /* NAV */
+  header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 6%;
+    border-bottom:1px solid var(--border);
+    position:sticky;
+    top:0;
+    background:var(--white);
+    z-index:10;
+  }
+  .logo{
+    font-size:22px;
+    font-weight:800;
+    color:var(--navy);
+    letter-spacing:-0.5px;
+  }
+  .logo span{color:var(--blue);}
+  nav a{
+    margin-left:28px;
+    font-size:14px;
+    font-weight:600;
+    color:var(--muted);
+  }
+  nav a:hover{color:var(--blue);}
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+    color:var(--white);
+    padding:64px 6% 90px;
+    text-align:center;
+  }
+  .hero h1{
+    font-size:2.4rem;
+    margin:0 0 14px;
+    font-weight:800;
+    line-height:1.2;
+  }
+  .hero p{
+    font-size:1.05rem;
+    color:#D6E4FF;
+    max-width:520px;
+    margin:0 auto 6px;
+  }
+
+  /* LAYOUT WRAPPER for login + dashboard */
+  .wrapper{
+    max-width:1080px;
+    margin:-50px auto 60px;
+    padding:0 6%;
+    display:grid;
+    grid-template-columns:1fr 1.3fr;
+    gap:24px;
+  }
+  @media (max-width:800px){
+    .wrapper{grid-template-columns:1fr;}
+  }
+
+  .card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:0 10px 30px rgba(11,37,69,0.08);
+    padding:28px;
+  }
+
+  /* LOGIN CARD */
+  .card h2{
+    margin-top:0;
+    font-size:1.3rem;
+    color:var(--navy);
+  }
+  .field{margin-bottom:16px;}
+  .field label{
+    display:block;
+    font-size:13px;
+    font-weight:600;
+    color:var(--muted);
+    margin-bottom:6px;
+  }
+  .field input{
+    width:100%;
+    padding:11px 12px;
+    border:1px solid var(--border);
+    border-radius:8px;
+    font-size:14px;
+    background:var(--sky);
+    color:var(--ink);
+  }
+  .field input:focus{
+    outline:2px solid var(--blue-light);
+    outline-offset:1px;
+    background:var(--white);
+  }
+  .btn{
+    display:inline-block;
+    width:100%;
+    text-align:center;
+    padding:12px 16px;
+    border-radius:8px;
+    border:none;
+    font-weight:700;
+    font-size:14px;
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary{
+    background:var(--blue);
+    color:var(--white);
+  }
+  .btn-primary:hover{background:var(--navy);}
+  .login-foot{
+    text-align:center;
+    font-size:13px;
+    color:var(--muted);
+    margin-top:14px;
+  }
+  .login-foot a{color:var(--blue);font-weight:600;}
+
+  /* DASHBOARD */
+  .stats{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-bottom:22px;
+  }
+  .stat{
+    background:var(--sky);
+    border-radius:10px;
+    padding:18px;
+    text-align:center;
+  }
+  .stat .value{
+    font-size:1.7rem;
+    font-weight:800;
+    color:var(--navy);
+  }
+  .stat .label{
+    font-size:12px;
+    color:var(--muted);
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+  }
+  .stat.earned .value{color:var(--green);}
+
+  .section-title{
+    font-size:1rem;
+    font-weight:700;
+    color:var(--navy);
+    margin:0 0 12px;
+  }
+
+  .task{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 16px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    margin-bottom:10px;
+  }
+  .task:last-child{margin-bottom:0;}
+  .task-info h4{
+    margin:0 0 4px;
+    font-size:14px;
+    color:var(--ink);
+  }
+  .task-info p{
+    margin:0;
+    font-size:12px;
+    color:var(--muted);
+  }
+  .task-reward{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .reward-amount{
+    font-weight:800;
+    color:var(--green);
+    font-size:15px;
+  }
+  .task-btn{
+    background:var(--blue);
+    color:var(--white);
+    border:none;
+    padding:8px 14px;
+    border-radius:7px;
+    font-size:13px;
+    font-weight:700;
+    cursor:pointer;
+  }
+  .task-btn:hover{background:var(--navy);}
+
+  .withdraw-row{
+    margin-top:22px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-top:18px;
+    border-top:1px solid var(--border);
+  }
+  .withdraw-row p{
+    margin:0;
+    font-size:12px;
+    color:var(--muted);
+  }
+  .withdraw-btn{
+    background:var(--green);
+    color:var(--white);
+    border:none;
+    padding:12px 22px;
+    border-radius:8px;
+    font-weight:700;
+    font-size:14px;
+    cursor:pointer;
+  }
+  .withdraw-btn:hover{opacity:.9;}
+
+  footer{
+    text-align:center;
+    padding:26px 6%;
+    color:var(--muted);
+    font-size:12px;
+    border-top:1px solid var(--border);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Earn<span>Hub</span></div>
+  <nav>
+    <a href="#tasks">Tasks</a>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#login">Log in</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Turn spare minutes into real earnings</h1>
+  <p>View ads, try apps, and complete short tasks — get paid for each one you finish.</p>
+</section>
+
+<div class="wrapper">
+
+  <!-- LOGIN CARD -->
+  <div class="card" id="login">
+    <h2>Log in to your account</h2>
+    <form onsubmit="return false;">
+      <div class="field">
+        <label for="email">Email address</label>
+        <input type="email" id="email" placeholder="you@example.com" required>
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="••••••••" required>
+      </div>
+      <button class="btn btn-primary" type="submit">Log in</button>
+    </form>
+    <p class="login-foot">New here? <a href="#">Create an account</a></p>
+  </div>
+
+  <!-- DASHBOARD CARD -->
+  <div class="card" id="dashboard">
+    <h2>Your dashboard</h2>
+    <div class="stats">
+      <div class="stat earned">
+        <div class="value">$50</div>
+        <div class="label">Total Earned</div>
+      </div>
+      <div class="stat">
+        <div class="value">3</div>
+        <div class="label">Available Tasks</div>
+      </div>
+    </div>
+
+    <p class="section-title" id="tasks">Available tasks</p>
+
+    <div class="task">
+      <div class="task-info">
+        <h4>Watch a 30-second ad</h4>
+        <p>Quick video view · no sign-up required</p>
+      </div>
+      <div class="task-reward">
+        <span class="reward-amount">$2.00</span>
+        <button class="task-btn">Start</button>
+      </div>
+    </div>
+
+    <div class="task">
+      <div class="task-info">
+        <h4>Download & open FitTrack app</h4>
+        <p>Keep it installed for 24 hours</p>
+      </div>
+      <div class="task-reward">
+        <span class="reward-amount">$6.50</span>
+        <button class="task-btn">Start</button>
+      </div>
+    </div>
+
+    <div class="task">
+      <div class="task-info">
+        <h4>Complete a short survey</h4>
+        <p>Takes about 5 minutes</p>
+      </div>
+      <div class="task-reward">
+        <span class="reward-amount">$10.00</span>
+        <button class="task-btn">Start</button>
+      </div>
+    </div>
+
+    <div class="withdraw-row">
+      <p>Available balance: <strong>$50.00</strong></p>
+      <button class="withdraw-btn">Withdraw</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 EarnHub. This is a demo interface — no real payments are processed.
+</footer>
+
+</body>
+</html>
