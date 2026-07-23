@@ -1,0 +1,5 @@
+{
+  "project_id": "dhebtkbhpueitcapmwcp",
+  "name": "storage_policies",
+  "query": "CREATE POLICY \"Users can upload their own payment proofs\" ON storage.objects FOR INSERT WITH CHECK (bucket_id = 'payment-proofs' AND auth.uid()::text = (storage.foldername(name))[1]);\nCREATE POLICY \"Users can view their own payment proofs\" ON storage.objects FOR SELECT USING (bucket_id = 'payment-proofs' AND auth.uid()::text = (storage.foldername(name))[1]);\nCREATE POLICY \"Admins can view all payment proofs\" ON storage.objects FOR SELECT USING (bucket_id = 'payment-proofs' AND EXISTS (SELECT 1 FROM public.profiles p WHERE p.id = auth.uid() AND p.is_admin = TRUE));"
+}

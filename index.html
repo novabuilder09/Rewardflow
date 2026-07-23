@@ -4,701 +4,142 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
   <meta name="description" content="RewardFlow - Earn real money by completing simple micro-tasks. Watch ads, download apps, complete surveys, and get paid instantly.">
-  <meta name="keywords" content="earn money, micro-tasks, rewards, get paid, online jobs, task platform">
-  <meta name="author" content="RewardFlow">
-  <meta property="og:title" content="RewardFlow - Turn Spare Minutes Into Real Earnings">
-  <meta property="og:description" content="Complete simple tasks and earn money. No experience needed. Start earning today!">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="https://via.placeholder.com/1200x630?text=RewardFlow">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="RewardFlow - Earn Money Online">
-  <meta name="twitter:description" content="Complete simple tasks and earn real money. Join thousands of users earning daily.">
   <title>RewardFlow - Earn Money by Completing Simple Tasks</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #1a237e;
       --secondary: #0d47a1;
       --accent: #00c853;
-      --background: #f5f7fa;
-      --card-bg: #ffffff;
-      --text-primary: #263238;
-      --text-secondary: #5B6B82;
-      --border-color: #e0e0e0;
+      --bg: #f5f7fa;
+      --card: #ffffff;
+      --text: #263238;
+      --muted: #5B6B82;
+      --border: #e0e0e0;
+      --danger: #d32f2f;
       --shadow: 0 4px 20px rgba(0,0,0,0.08);
-      --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
       --radius: 8px;
-      --radius-lg: 12px;
     }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      height: 100%;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      color: var(--text-primary);
-      background-color: var(--background);
-      line-height: 1.6;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    button {
-      font-family: 'Inter', sans-serif;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    .page-content {
-      animation: fadeIn 0.5s ease-out;
-    }
-
-    .spinner {
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      border: 2px solid rgba(255,255,255,0.3);
-      border-top-color: white;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin-right: 8px;
-    }
-
-    /* ===== HEADER & NAVIGATION ===== */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-      border-bottom: 1px solid var(--border-color);
-      box-shadow: var(--shadow);
-    }
-
-    .header-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 16px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-family: 'Poppins', sans-serif;
-      font-size: 24px;
-      font-weight: 800;
-      color: white;
-      letter-spacing: -0.5px;
-    }
-
-    .logo .accent {
-      color: var(--accent);
-    }
-
-    nav {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-    }
-
-    nav a {
-      font-size: 14px;
-      font-weight: 600;
-      color: white;
-      transition: color 0.2s ease;
-    }
-
-    nav a:hover {
-      color: var(--accent);
-    }
-
-    .nav-btn {
-      background: var(--accent);
-      color: white;
-      padding: 10px 20px;
-      border-radius: var(--radius);
-      border: none;
-      font-weight: 600;
-      font-size: 14px;
-      transition: all 0.2s ease;
-    }
-
-    .nav-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
-    }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      gap: 5px;
-    }
-
-    .hamburger span {
-      width: 25px;
-      height: 3px;
-      background: white;
-      border-radius: 2px;
-      transition: all 0.3s ease;
-    }
-
-    /* ===== HERO SECTION ===== */
-    .hero {
-      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-      color: white;
-      padding: 80px 20px;
-      text-align: center;
-    }
-
-    .hero-container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .hero h1 {
-      font-family: 'Poppins', sans-serif;
-      font-size: clamp(28px, 5vw, 48px);
-      font-weight: 800;
-      margin-bottom: 20px;
-      line-height: 1.2;
-    }
-
-    .hero p {
-      font-size: 18px;
-      color: rgba(255, 255, 255, 0.9);
-      margin-bottom: 30px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero-cta {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: white;
-      padding: 14px 32px;
-      border-radius: var(--radius);
-      border: none;
-      font-weight: 700;
-      font-size: 16px;
-      transition: all 0.2s ease;
-      min-height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-      opacity: 0.95;
-    }
-
-    .btn-primary:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    .btn-secondary {
-      background: white;
-      color: var(--primary);
-      padding: 14px 32px;
-      border-radius: var(--radius);
-      border: none;
-      font-weight: 700;
-      font-size: 16px;
-      transition: all 0.2s ease;
-      min-height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .btn-secondary:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    /* ===== TESTIMONIALS ===== */
-    .testimonials {
-      padding: 80px 20px;
-      background: white;
-    }
-
-    .section-container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-title {
-      font-family: 'Poppins', sans-serif;
-      font-size: 36px;
-      font-weight: 800;
-      text-align: center;
-      margin-bottom: 60px;
-      color: var(--primary);
-    }
-
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-    }
-
-    .testimonial {
-      background: var(--card-bg);
-      padding: 28px;
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow);
-      transition: all 0.3s ease;
-      border-left: 4px solid var(--accent);
-    }
-
-    .testimonial:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .testimonial-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .testimonial-avatar {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    .testimonial-name {
-      font-weight: 700;
-      color: var(--primary);
-      font-size: 14px;
-    }
-
-    .testimonial-location {
-      font-size: 12px;
-      color: var(--text-secondary);
-    }
-
-    .testimonial-quote {
-      font-size: 15px;
-      color: var(--text-primary);
-      line-height: 1.6;
-      font-style: italic;
-    }
-
-    /* ===== FAQ ===== */
-    .faq {
-      padding: 80px 20px;
-      background: var(--background);
-    }
-
-    .faq-container {
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .faq-item {
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
-      margin-bottom: 12px;
-      overflow: hidden;
-      background: white;
-    }
-
-    .faq-question {
-      padding: 20px;
-      background: white;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 600;
-      color: var(--primary);
-      transition: all 0.2s ease;
-    }
-
-    .faq-question:hover {
-      background: var(--background);
-    }
-
-    .faq-toggle {
-      font-size: 20px;
-      transition: transform 0.2s ease;
-    }
-
-    .faq-item.active .faq-toggle {
-      transform: rotate(180deg);
-    }
-
-    .faq-answer {
-      padding: 0 20px;
-      max-height: 0;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      color: var(--text-secondary);
-    }
-
-    .faq-item.active .faq-answer {
-      padding: 0 20px 20px;
-      max-height: 500px;
-    }
-
-    /* ===== TASKS SECTION ===== */
-    .tasks-section {
-      padding: 80px 20px;
-      background: white;
-    }
-
-    .tasks-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
-    }
-
-    .task-card {
-      background: var(--card-bg);
-      padding: 24px;
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow);
-      transition: all 0.3s ease;
-      border-left: 4px solid var(--accent);
-    }
-
-    .task-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-lg);
-    }
-
-    .task-title {
-      font-family: 'Poppins', sans-serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 8px;
-    }
-
-    .task-description {
-      font-size: 14px;
-      color: var(--text-secondary);
-      margin-bottom: 16px;
-    }
-
-    .task-reward {
-      font-family: 'Poppins', sans-serif;
-      font-size: 24px;
-      font-weight: 800;
-      color: var(--accent);
-      margin-bottom: 16px;
-    }
-
-    /* ===== MODAL ===== */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0,0,0,0.5);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .modal.active {
-      display: flex;
-    }
-
-    .modal-content {
-      background: white;
-      border-radius: var(--radius-lg);
-      padding: 40px;
-      max-width: 500px;
-      width: 100%;
-      max-height: 90vh;
-      overflow-y: auto;
-      position: relative;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      background: none;
-      border: none;
-      font-size: 24px;
-      cursor: pointer;
-      color: var(--text-secondary);
-    }
-
-    .form-group {
-      margin-bottom: 16px;
-    }
-
-    .form-group label {
-      display: block;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--primary);
-      font-size: 14px;
-    }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius);
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      transition: border-color 0.2s ease;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: var(--primary);
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      text-align: left;
-      margin-bottom: 30px;
-    }
-
-    .footer-section h4 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-
-    .footer-section a {
-      display: block;
-      font-size: 14px;
-      margin-bottom: 8px;
-      opacity: 0.9;
-      transition: opacity 0.2s ease;
-    }
-
-    .footer-section a:hover {
-      opacity: 1;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 20px;
-      font-size: 14px;
-      opacity: 0.8;
-    }
-
-    /* ===== WHATSAPP BUTTON ===== */
-    .whatsapp-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 56px;
-      height: 56px;
-      background: #25D366;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 28px;
-      box-shadow: var(--shadow-lg);
-      z-index: 98;
-      transition: all 0.2s ease;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-    }
-
-    .whatsapp-btn:hover {
-      transform: scale(1.1);
-    }
-
-    /* ===== RESPONSIVE ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.2s; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* HEADER */
+    header { position: sticky; top: 0; z-index: 100; background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%); box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+    .header-inner { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-family: 'Poppins', sans-serif; font-size: 24px; font-weight: 800; color: white; }
+    .logo span { color: var(--accent); }
+    nav { display: flex; align-items: center; gap: 24px; }
+    nav a { color: rgba(255,255,255,0.85); font-size: 14px; font-weight: 500; }
+    nav a:hover { color: white; }
+    .btn-signin { background: var(--accent); color: #1a237e !important; padding: 8px 20px; border-radius: 6px; font-weight: 700; font-size: 14px; border: none; }
+    .btn-signin:hover { background: #00e676; }
+    .hamburger { display: none; background: none; border: none; color: white; font-size: 24px; }
+
+    /* HERO */
+    .hero { background: linear-gradient(135deg, #1a237e 0%, #0d47a1 60%, #1565c0 100%); color: white; padding: 80px 24px; text-align: center; }
+    .hero h1 { font-family: 'Poppins', sans-serif; font-size: clamp(28px, 5vw, 52px); font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
+    .hero p { font-size: 18px; opacity: 0.9; max-width: 600px; margin: 0 auto 32px; }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { background: var(--accent); color: #1a237e; padding: 14px 32px; border-radius: 8px; font-weight: 700; font-size: 16px; border: none; }
+    .btn-primary:hover { background: #00e676; transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: white; padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 16px; border: 2px solid rgba(255,255,255,0.5); }
+    .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.1); }
+
+    /* STATS */
+    .stats { background: white; padding: 40px 24px; }
+    .stats-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 24px; text-align: center; }
+    .stat-num { font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: 800; color: var(--primary); }
+    .stat-label { color: var(--muted); font-size: 14px; margin-top: 4px; }
+
+    /* SECTION */
+    section { padding: 60px 24px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-title { font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: 700; color: var(--primary); text-align: center; margin-bottom: 12px; }
+    .section-sub { text-align: center; color: var(--muted); margin-bottom: 40px; }
+
+    /* TESTIMONIALS */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+    .testimonial-card { background: white; border-radius: 12px; padding: 20px; box-shadow: var(--shadow); border-left: 4px solid var(--accent); animation: fadeIn 0.5s ease; }
+    .testimonial-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .testimonial-header img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+    .testimonial-name { font-weight: 600; font-size: 14px; }
+    .testimonial-country { color: var(--muted); font-size: 12px; }
+    .testimonial-text { color: var(--muted); font-size: 14px; font-style: italic; }
+
+    /* TASKS */
+    .tasks-section { background: var(--bg); }
+    .tasks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+    .task-card { background: white; border-radius: 12px; padding: 24px; box-shadow: var(--shadow); position: relative; animation: fadeIn 0.4s ease; }
+    .task-badge { display: inline-block; background: linear-gradient(135deg, #f59e0b, #d97706); color: white; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-bottom: 12px; }
+    .task-title { font-weight: 700; font-size: 16px; color: var(--primary); margin-bottom: 8px; }
+    .task-desc { color: var(--muted); font-size: 13px; margin-bottom: 16px; line-height: 1.5; }
+    .task-reward { font-size: 24px; font-weight: 800; color: var(--accent); margin-bottom: 16px; }
+    .task-btn { width: 100%; padding: 10px; background: var(--primary); color: white; border: none; border-radius: 6px; font-weight: 600; font-size: 14px; }
+    .task-btn:hover { background: var(--secondary); }
+    .task-btn.premium { background: linear-gradient(135deg, #f59e0b, #d97706); }
+    .task-btn.premium:hover { background: linear-gradient(135deg, #d97706, #b45309); }
+    .tasks-loading { text-align: center; padding: 60px; color: var(--muted); grid-column: 1/-1; }
+    .spinner-icon { display: inline-block; width: 32px; height: 32px; border: 3px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 12px; }
+
+    /* FAQ */
+    .faq-section { background: white; }
+    .faq-list { max-width: 700px; margin: 0 auto; }
+    .faq-item { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 12px; overflow: hidden; }
+    .faq-q { padding: 16px 20px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: white; }
+    .faq-q:hover { background: #f8f9fa; }
+    .faq-arrow { transition: transform 0.2s; font-size: 12px; color: var(--muted); }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a { display: none; padding: 0 20px 16px; color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .faq-item.open .faq-a { display: block; }
+
+    /* FOOTER */
+    footer { background: #1a237e; color: rgba(255,255,255,0.8); padding: 40px 24px 20px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 32px; margin-bottom: 32px; }
+    .footer-title { color: white; font-weight: 700; margin-bottom: 12px; font-size: 14px; }
+    .footer-link { display: block; color: rgba(255,255,255,0.7); font-size: 13px; margin-bottom: 8px; }
+    .footer-link:hover { color: white; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.15); padding-top: 20px; text-align: center; font-size: 13px; }
+
+    /* MODALS */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+    .modal-overlay.active { display: flex; }
+    .modal-box { background: white; border-radius: 16px; padding: 32px; width: 100%; max-width: 420px; position: relative; animation: fadeIn 0.3s ease; max-height: 90vh; overflow-y: auto; }
+    .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 20px; color: var(--muted); cursor: pointer; line-height: 1; }
+    .modal-close:hover { color: var(--text); }
+    .modal-title { font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+    .modal-sub { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+    .form-group { margin-bottom: 16px; }
+    .form-label { display: block; font-weight: 600; font-size: 13px; color: var(--text); margin-bottom: 6px; }
+    .form-input { width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Inter', sans-serif; transition: border-color 0.2s; }
+    .form-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(26,35,126,0.08); }
+    .form-submit { width: 100%; padding: 13px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 15px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .form-submit:hover { background: var(--secondary); }
+    .form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+    .btn-spinner { display: none; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.8s linear infinite; }
+    .alert { padding: 12px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 16px; display: none; }
+    .alert-error { background: #fdecea; color: #c62828; border: 1px solid #ffcdd2; }
+    .alert-success { background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
+    .modal-link { color: var(--primary); font-weight: 600; cursor: pointer; background: none; border: none; font-size: 14px; font-family: 'Inter', sans-serif; }
+    .modal-link:hover { text-decoration: underline; }
+    .modal-footer { text-align: center; margin-top: 16px; color: var(--muted); font-size: 13px; }
+
+    /* WHATSAPP */
+    .wa-float { position: fixed; bottom: 24px; right: 24px; z-index: 999; background: #25D366; color: white; width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 4px 12px rgba(37,211,102,0.4); text-decoration: none; }
+    .wa-float:hover { background: #128C7E; transform: scale(1.05); }
+
+    /* RESPONSIVE */
     @media (max-width: 768px) {
-      .hamburger {
-        display: flex;
-      }
-
-      nav {
-        display: none;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
-        flex-direction: column;
-        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-        padding: 20px;
-        gap: 16px;
-      }
-
-      nav.active {
-        display: flex;
-      }
-
-      nav a {
-        font-size: 14px;
-      }
-
-      .hero {
-        padding: 60px 20px;
-      }
-
-      .hero h1 {
-        font-size: 28px;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
-
-      .section-title {
-        font-size: 28px;
-        margin-bottom: 40px;
-      }
-
-      .modal-content {
-        padding: 24px;
-      }
-
-      .testimonials-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .tasks-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-content {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        text-align: center;
-      }
-
-      .footer-section a {
-        display: inline;
-        margin: 0 12px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .header-container {
-        padding: 12px 16px;
-      }
-
-      .logo {
-        font-size: 20px;
-      }
-
-      .hero {
-        padding: 40px 16px;
-      }
-
-      .hero h1 {
-        font-size: 22px;
-      }
-
-      .hero p {
-        font-size: 14px;
-      }
-
-      .hero-cta {
-        gap: 8px;
-      }
-
-      .btn-primary,
-      .btn-secondary {
-        padding: 12px 24px;
-        font-size: 14px;
-      }
-
-      .section-title {
-        font-size: 24px;
-      }
-
-      .testimonials {
-        padding: 40px 16px;
-      }
-
-      .tasks-section {
-        padding: 40px 16px;
-      }
-
-      .faq {
-        padding: 40px 16px;
-      }
-
-      .modal-content {
-        padding: 20px;
-      }
-
-      .whatsapp-btn {
-        width: 48px;
-        height: 48px;
-        font-size: 24px;
-        bottom: 16px;
-        right: 16px;
-      }
+      nav { display: none; }
+      nav.open { display: flex; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: #1a237e; padding: 16px; gap: 12px; z-index: 99; }
+      .hamburger { display: block; }
+      .header-inner { position: relative; }
     }
   </style>
 </head>
@@ -706,150 +147,121 @@
 
 <!-- HEADER -->
 <header>
-  <div class="header-container">
-    <div class="logo">Reward<span class="accent">Flow</span></div>
-    <nav id="nav">
+  <div class="header-inner">
+    <div class="logo">Reward<span>Flow</span></div>
+    <nav id="mainNav">
       <a href="#tasks">Tasks</a>
       <a href="#testimonials">Testimonials</a>
       <a href="#faq">FAQ</a>
-      <button class="nav-btn" onclick="openLoginModal()">Sign In</button>
+      <button class="btn-signin" onclick="openModal('login')">Sign In</button>
     </nav>
-    <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()">☰</button>
   </div>
 </header>
 
-<!-- HERO SECTION -->
-<section class="hero page-content">
-  <div class="hero-container">
-    <h1>Turn Spare Minutes Into Real Earnings</h1>
-    <p>Complete simple tasks, watch ads, download apps, and get paid instantly. No experience needed. Join thousands of users earning daily.</p>
-    <div class="hero-cta">
-      <button class="btn-primary" onclick="openSignupModal()">Start Earning Now</button>
-      <button class="btn-secondary" onclick="document.getElementById('tasks').scrollIntoView()">Learn More</button>
-    </div>
+<!-- HERO -->
+<section class="hero">
+  <h1>Turn Spare Minutes Into<br>Real Earnings</h1>
+  <p>Complete simple tasks, watch ads, download apps, and get paid instantly. No experience needed. Join thousands of users earning daily.</p>
+  <div class="hero-btns">
+    <button class="btn-primary" onclick="openModal('signup')">Start Earning Now</button>
+    <button class="btn-outline" onclick="document.getElementById('tasks').scrollIntoView({behavior:'smooth'})">View Tasks</button>
   </div>
 </section>
 
-<!-- TESTIMONIALS SECTION -->
-<section class="testimonials" id="testimonials">
-  <div class="section-container">
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div><div class="stat-num">50,000+</div><div class="stat-label">Active Users</div></div>
+    <div><div class="stat-num">$2M+</div><div class="stat-label">Total Paid Out</div></div>
+    <div><div class="stat-num">15+</div><div class="stat-label">Task Categories</div></div>
+    <div><div class="stat-num">24/7</div><div class="stat-label">Support Available</div></div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-inner">
     <h2 class="section-title">What Our Users Say</h2>
+    <p class="section-sub">Join thousands of satisfied earners worldwide</p>
     <div class="testimonials-grid">
-      <div class="testimonial">
+      <div class="testimonial-card">
         <div class="testimonial-header">
-          <img src="https://i.pravatar.cc/150?img=1" alt="Maria Santos" class="testimonial-avatar">
-          <div>
-            <div class="testimonial-name">Maria Santos</div>
-            <div class="testimonial-location">Philippines</div>
-          </div>
+          <img src="https://i.pravatar.cc/150?img=1" alt="Maria Santos">
+          <div><div class="testimonial-name">Maria Santos</div><div class="testimonial-country">🇵🇭 Philippines</div></div>
         </div>
-        <div class="testimonial-quote">"I earned $450 in my first week! The tasks are so easy."</div>
+        <p class="testimonial-text">"I earned $450 in my first week! The tasks are so easy and the payments are instant."</p>
       </div>
-
-      <div class="testimonial">
+      <div class="testimonial-card">
         <div class="testimonial-header">
-          <img src="https://i.pravatar.cc/150?img=2" alt="Ahmed Khan" class="testimonial-avatar">
-          <div>
-            <div class="testimonial-name">Ahmed Khan</div>
-            <div class="testimonial-location">Pakistan</div>
-          </div>
+          <img src="https://i.pravatar.cc/150?img=2" alt="Ahmed Khan">
+          <div><div class="testimonial-name">Ahmed Khan</div><div class="testimonial-country">🇵🇰 Pakistan</div></div>
         </div>
-        <div class="testimonial-quote">"$320 in 10 days! Highly recommend RewardFlow."</div>
+        <p class="testimonial-text">"$320 in 10 days! Highly recommend RewardFlow to anyone looking for extra income."</p>
       </div>
-
-      <div class="testimonial">
+      <div class="testimonial-card">
         <div class="testimonial-header">
-          <img src="https://i.pravatar.cc/150?img=3" alt="Chinwe Okafor" class="testimonial-avatar">
-          <div>
-            <div class="testimonial-name">Chinwe Okafor</div>
-            <div class="testimonial-location">Nigeria</div>
-          </div>
+          <img src="https://i.pravatar.cc/150?img=3" alt="Chinwe Okafor">
+          <div><div class="testimonial-name">Chinwe Okafor</div><div class="testimonial-country">🇳🇬 Nigeria</div></div>
         </div>
-        <div class="testimonial-quote">"The app testing tasks are simple. Made $280 already."</div>
+        <p class="testimonial-text">"The app testing tasks are so simple. I've made $280 already this month!"</p>
       </div>
-
-      <div class="testimonial">
+      <div class="testimonial-card">
         <div class="testimonial-header">
-          <img src="https://i.pravatar.cc/150?img=4" alt="Siti Rahayu" class="testimonial-avatar">
-          <div>
-            <div class="testimonial-name">Siti Rahayu</div>
-            <div class="testimonial-location">Indonesia</div>
-          </div>
+          <img src="https://i.pravatar.cc/150?img=4" alt="Siti Rahayu">
+          <div><div class="testimonial-name">Siti Rahayu</div><div class="testimonial-country">🇮🇩 Indonesia</div></div>
         </div>
-        <div class="testimonial-quote">"$500 in two weeks. Life-changing opportunity."</div>
+        <p class="testimonial-text">"$500 in two weeks. This has been life-changing for my family."</p>
       </div>
-
-      <div class="testimonial">
+      <div class="testimonial-card">
         <div class="testimonial-header">
-          <img src="https://i.pravatar.cc/150?img=5" alt="David Ochieng" class="testimonial-avatar">
-          <div>
-            <div class="testimonial-name">David Ochieng</div>
-            <div class="testimonial-location">Kenya</div>
-          </div>
+          <img src="https://i.pravatar.cc/150?img=5" alt="David Ochieng">
+          <div><div class="testimonial-name">David Ochieng</div><div class="testimonial-country">🇰🇪 Kenya</div></div>
         </div>
-        <div class="testimonial-quote">"Premium upgrade was worth it. Now earning $50/day."</div>
+        <p class="testimonial-text">"Premium upgrade was worth every penny. Now earning $50/day consistently!"</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TASKS SECTION -->
-<section class="tasks-section" id="tasks">
-  <div class="section-container">
+<!-- TASKS -->
+<section id="tasks" class="tasks-section">
+  <div class="section-inner">
     <h2 class="section-title">Available Tasks</h2>
+    <p class="section-sub">Sign up to start completing tasks and earning money</p>
     <div class="tasks-grid" id="tasksGrid">
-      <!-- Tasks will be populated by JavaScript -->
+      <div class="tasks-loading">
+        <div class="spinner-icon"></div>
+        <div>Loading tasks...</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FAQ SECTION -->
-<section class="faq" id="faq">
-  <div class="section-container">
+<!-- FAQ -->
+<section id="faq" class="faq-section">
+  <div class="section-inner">
     <h2 class="section-title">Frequently Asked Questions</h2>
-    <div class="faq-container">
+    <div class="faq-list">
       <div class="faq-item">
-        <div class="faq-question">
-          <span>How do I earn?</span>
-          <span class="faq-toggle">▼</span>
-        </div>
-        <div class="faq-answer">Sign up, complete tasks from your dashboard, submit proof, and get paid.</div>
+        <div class="faq-q" onclick="toggleFaq(this)">How do I earn? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Sign up for free, complete tasks from your dashboard, submit proof, and get paid directly to your account.</div>
       </div>
-
       <div class="faq-item">
-        <div class="faq-question">
-          <span>When do I get paid?</span>
-          <span class="faq-toggle">▼</span>
-        </div>
-        <div class="faq-answer">Withdrawals are processed within 24-48 hours after reaching $50.</div>
+        <div class="faq-q" onclick="toggleFaq(this)">When do I get paid? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Withdrawals are processed within 24-48 hours after reaching the minimum $50 threshold.</div>
       </div>
-
       <div class="faq-item">
-        <div class="faq-question">
-          <span>What is the activation fee?</span>
-          <span class="faq-toggle">▼</span>
-        </div>
-        <div class="faq-answer">$15 one-time fee to unlock premium tasks that pay up to $15 each.</div>
+        <div class="faq-q" onclick="toggleFaq(this)">What is the activation fee? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">There is a $15 one-time activation fee to unlock premium tasks that pay up to $15 each. Free tasks are available without any fee.</div>
       </div>
-
       <div class="faq-item">
-        <div class="faq-question">
-          <span>Is this legit?</span>
-          <span class="faq-toggle">▼</span>
-        </div>
-        <div class="faq-answer">Yes, we have thousands of satisfied users worldwide. Check our testimonials. <a href="https://wa.me/447379343980" target="_blank" style="color: var(--accent); font-weight: 600;">Contact us on WhatsApp</a></div>
+        <div class="faq-q" onclick="toggleFaq(this)">Is this legitimate? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">Yes! We have thousands of satisfied users worldwide. Check our testimonials above. <a href="https://wa.me/447379343980" style="color:var(--primary);font-weight:600;">Contact us on WhatsApp</a> if you have questions.</div>
       </div>
-
       <div class="faq-item">
-        <div class="faq-question">
-          <span>How do I contact support?</span>
-          <span class="faq-toggle">▼</span>
-        </div>
-        <div class="faq-answer">WhatsApp: <a href="https://wa.me/447379343980" target="_blank" style="color: var(--accent); font-weight: 600;">+447379343980</a></div>
+        <div class="faq-q" onclick="toggleFaq(this)">How do I contact support? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a">WhatsApp: <a href="https://wa.me/447379343980" style="color:var(--primary);font-weight:600;">+447379343980</a> — We're available 24/7.</div>
       </div>
     </div>
   </div>
@@ -857,231 +269,378 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-content">
-    <div class="footer-section">
-      <h4>About</h4>
-      <a href="#about">About RewardFlow</a>
-      <a href="#blog">Blog</a>
-      <a href="#careers">Careers</a>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="margin-bottom:12px;">Reward<span>Flow</span></div>
+        <p style="font-size:13px;opacity:0.7;">Earn real money completing simple tasks from home.</p>
+      </div>
+      <div>
+        <div class="footer-title">Quick Links</div>
+        <a href="#tasks" class="footer-link">Available Tasks</a>
+        <a href="#faq" class="footer-link">FAQ</a>
+        <a href="https://wa.me/447379343980" class="footer-link">Contact Support</a>
+      </div>
+      <div>
+        <div class="footer-title">Legal</div>
+        <a href="#" class="footer-link">Terms of Service</a>
+        <a href="#" class="footer-link">Privacy Policy</a>
+      </div>
     </div>
-    <div class="footer-section">
-      <h4>Support</h4>
-      <a href="https://wa.me/447379343980" target="_blank">WhatsApp: +447379343980</a>
-      <a href="#contact">Contact Us</a>
-      <a href="#faq">FAQ</a>
-    </div>
-    <div class="footer-section">
-      <h4>Legal</h4>
-      <a href="#terms">Terms of Service</a>
-      <a href="#privacy">Privacy Policy</a>
-      <a href="#disclaimer">Disclaimer</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2026 RewardFlow. All rights reserved. | Wallet: 0x51f82ad5a4766279bc0da84085f67bad7d30</p>
+    <div class="footer-bottom">© 2026 RewardFlow. All rights reserved.</div>
   </div>
 </footer>
 
-<!-- WHATSAPP BUTTON -->
-<a href="https://wa.me/447379343980" target="_blank" class="whatsapp-btn" title="Chat with us on WhatsApp">💬</a>
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/447379343980" class="wa-float" target="_blank" title="Chat with us on WhatsApp">💬</a>
 
 <!-- LOGIN MODAL -->
-<div class="modal" id="loginModal">
-  <div class="modal-content">
-    <button class="modal-close" onclick="closeLoginModal()">×</button>
-    <h2 style="font-family: 'Poppins', sans-serif; margin-bottom: 24px; color: var(--primary);">Sign In</h2>
-    <form onsubmit="handleLogin(event)">
+<div class="modal-overlay" id="loginModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('login')">✕</button>
+    <div class="modal-title">Welcome Back</div>
+    <div class="modal-sub">Sign in to your RewardFlow account</div>
+    <div class="alert alert-error" id="loginAlert"></div>
+    <div class="alert alert-success" id="loginSuccess"></div>
+    <form id="loginForm" onsubmit="handleLogin(event)">
       <div class="form-group">
-        <label for="login-email">Email Address</label>
-        <input type="email" id="login-email" placeholder="you@example.com" required>
+        <label class="form-label" for="loginEmail">Email Address</label>
+        <input class="form-input" type="email" id="loginEmail" placeholder="you@example.com" required>
       </div>
       <div class="form-group">
-        <label for="login-password">Password</label>
-        <input type="password" id="login-password" placeholder="••••••••" required>
+        <label class="form-label" for="loginPassword">Password</label>
+        <input class="form-input" type="password" id="loginPassword" placeholder="Your password" required>
       </div>
-      <button type="submit" class="btn-primary" style="width: 100%; margin-top: 24px;">
-        <span class="spinner" id="loginSpinner" style="display: none;"></span>
+      <button type="submit" class="form-submit" id="loginBtn">
+        <span class="btn-spinner" id="loginSpinner"></span>
         Sign In
       </button>
     </form>
-    <p style="text-align: center; margin-top: 16px; font-size: 14px; color: var(--text-secondary);">
-      Don't have an account? <a href="#" onclick="switchToSignup()" style="color: var(--primary); font-weight: 600;">Create one</a>
-    </p>
+    <div class="modal-footer">
+      <button class="modal-link" onclick="openModal('forgot')">Forgot password?</button>
+      &nbsp;·&nbsp;
+      Don't have an account? <button class="modal-link" onclick="openModal('signup')">Sign Up</button>
+    </div>
   </div>
 </div>
 
 <!-- SIGNUP MODAL -->
-<div class="modal" id="signupModal">
-  <div class="modal-content">
-    <button class="modal-close" onclick="closeSignupModal()">×</button>
-    <h2 style="font-family: 'Poppins', sans-serif; margin-bottom: 24px; color: var(--primary);">Create Account</h2>
-    <form onsubmit="handleSignup(event)">
+<div class="modal-overlay" id="signupModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('signup')">✕</button>
+    <div class="modal-title">Create Account</div>
+    <div class="modal-sub">Join RewardFlow and start earning today</div>
+    <div class="alert alert-error" id="signupAlert"></div>
+    <div class="alert alert-success" id="signupSuccess"></div>
+    <form id="signupForm" onsubmit="handleSignup(event)">
       <div class="form-group">
-        <label for="signup-name">Full Name</label>
-        <input type="text" id="signup-name" placeholder="John Doe" required>
+        <label class="form-label" for="signupName">Full Name</label>
+        <input class="form-input" type="text" id="signupName" placeholder="Your full name" required>
       </div>
       <div class="form-group">
-        <label for="signup-email">Email Address</label>
-        <input type="email" id="signup-email" placeholder="you@example.com" required>
+        <label class="form-label" for="signupEmail">Email Address</label>
+        <input class="form-input" type="email" id="signupEmail" placeholder="you@example.com" required>
       </div>
       <div class="form-group">
-        <label for="signup-password">Password</label>
-        <input type="password" id="signup-password" placeholder="••••••••" required>
+        <label class="form-label" for="signupPassword">Password</label>
+        <input class="form-input" type="password" id="signupPassword" placeholder="Min. 6 characters" required minlength="6">
       </div>
-      <button type="submit" class="btn-primary" style="width: 100%; margin-top: 24px;">
-        <span class="spinner" id="signupSpinner" style="display: none;"></span>
-        Create Account
+      <button type="submit" class="form-submit" id="signupBtn">
+        <span class="btn-spinner" id="signupSpinner"></span>
+        Create Free Account
       </button>
     </form>
-    <p style="text-align: center; margin-top: 16px; font-size: 14px; color: var(--text-secondary);">
-      Already have an account? <a href="#" onclick="switchToLogin()" style="color: var(--primary); font-weight: 600;">Sign in</a>
-    </p>
+    <div class="modal-footer">
+      Already have an account? <button class="modal-link" onclick="openModal('login')">Sign In</button>
+    </div>
   </div>
 </div>
 
-<script>
-  // Tasks data - exactly 15 tasks as specified
-  const tasks = [
-    { id: 1, title: "Test Shopping App", reward: 4, description: "Download the app, browse products for 2 minutes, take a screenshot" },
-    { id: 2, title: "Watch 2-Minute Ad", reward: 2, description: "Watch the full advertisement, describe what you saw" },
-    { id: 3, title: "Review Music Video", reward: 3, description: "Watch the music video, leave a 3-sentence review" },
-    { id: 4, title: "Complete Market Survey", reward: 5, description: "Answer 10 questions about consumer preferences" },
-    { id: 5, title: "Test Game App", reward: 6, description: "Download the game, play for 5 minutes, submit a screenshot of your high score" },
-    { id: 6, title: "Leave Google Review", reward: 4, description: "Leave a 5-star review for a partner business" },
-    { id: 7, title: "Watch Crypto Tutorial", reward: 7, description: "Watch the 5-minute tutorial, summarize what you learned" },
-    { id: 8, title: "Test Fitness App", reward: 5, description: "Download the app, complete one workout, submit screenshot" },
-    { id: 9, title: "Complete Feedback Form", reward: 3, description: "Fill out a 5-question feedback form" },
-    { id: 10, title: "Test Social Media App", reward: 8, description: "Create a post, take a screenshot of the engagement" },
-    { id: 11, title: "Rate YouTube Video", reward: 2, description: "Watch and rate a video on a scale of 1 to 5" },
-    { id: 12, title: "Test Food Delivery App", reward: 5, description: "Browse the menu, add items to cart, take a screenshot" },
-    { id: 13, title: "Review E-book", reward: 4, description: "Read the first chapter, write a 2-sentence review" },
-    { id: 14, title: "Test Travel App", reward: 6, description: "Search for a flight, submit a screenshot of search results" },
-    { id: 15, title: "Complete Quick Poll", reward: 1, description: "Answer 3 simple yes or no questions" }
-  ];
-
-  // Populate tasks on page load
-  function populateTasks() {
-    const tasksGrid = document.getElementById('tasksGrid');
-    tasksGrid.innerHTML = tasks.map(task => `
-      <div class="task-card">
-        <div class="task-title">${task.title}</div>
-        <div class="task-description">${task.description}</div>
-        <div class="task-reward">$${task.reward}</div>
-        <button class="btn-primary" onclick="startTask(${task.id})">
-          <span class="spinner" style="display: none;"></span>
-          Start Task
-        </button>
+<!-- FORGOT PASSWORD MODAL -->
+<div class="modal-overlay" id="forgotModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('forgot')">✕</button>
+    <div class="modal-title">Reset Password</div>
+    <div class="modal-sub">Enter your email to receive a reset link</div>
+    <div class="alert alert-error" id="forgotAlert"></div>
+    <div class="alert alert-success" id="forgotSuccess"></div>
+    <form id="forgotForm" onsubmit="handleForgotPassword(event)">
+      <div class="form-group">
+        <label class="form-label" for="forgotEmail">Email Address</label>
+        <input class="form-input" type="email" id="forgotEmail" placeholder="you@example.com" required>
       </div>
-    `).join('');
-  }
+      <button type="submit" class="form-submit" id="forgotBtn">
+        <span class="btn-spinner" id="forgotSpinner"></span>
+        Send Reset Link
+      </button>
+    </form>
+    <div class="modal-footer">
+      <button class="modal-link" onclick="openModal('login')">Back to Sign In</button>
+    </div>
+  </div>
+</div>
 
-  // Modal functions
-  function openLoginModal() {
-    document.getElementById('loginModal').classList.add('active');
-  }
+<!-- Supabase JS CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+(function() {
+  'use strict';
 
-  function closeLoginModal() {
-    document.getElementById('loginModal').classList.remove('active');
-  }
+  // =============================================
+  // CONFIG
+  // =============================================
+  var SUPABASE_URL = 'https://dhebtkbhpueitcapmwcp.supabase.co';
+  var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRoZWJ0a2JocHVlaXRjYXBtd2NwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ3OTQ4ODYsImV4cCI6MjEwMDM3MDg4Nn0.KBBfbl7cfW9tWfuFJv5aiZjUztRpKeHAyVLI8MqYgcA';
+  var sb = null;
 
-  function openSignupModal() {
-    document.getElementById('signupModal').classList.add('active');
-  }
+  // =============================================
+  // INIT
+  // =============================================
+  function init() {
+    try {
+      sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    } catch(e) {
+      console.error('Supabase init error:', e);
+      return;
+    }
 
-  function closeSignupModal() {
-    document.getElementById('signupModal').classList.remove('active');
-  }
+    // Load tasks immediately
+    loadTasks();
 
-  function switchToSignup() {
-    closeLoginModal();
-    openSignupModal();
-  }
-
-  function switchToLogin() {
-    closeSignupModal();
-    openLoginModal();
-  }
-
-  // Form handlers with loading spinners
-  function handleLogin(e) {
-    e.preventDefault();
-    const button = e.target.querySelector('button');
-    const spinner = button.querySelector('.spinner');
-    button.disabled = true;
-    spinner.style.display = 'inline-block';
-    
-    setTimeout(() => {
-      alert('Login functionality will be implemented with backend integration.');
-      button.disabled = false;
-      spinner.style.display = 'none';
-      closeLoginModal();
-    }, 2500);
-  }
-
-  function handleSignup(e) {
-    e.preventDefault();
-    const button = e.target.querySelector('button');
-    const spinner = button.querySelector('.spinner');
-    button.disabled = true;
-    spinner.style.display = 'inline-block';
-    
-    setTimeout(() => {
-      alert('Signup functionality will be implemented with backend integration.');
-      button.disabled = false;
-      spinner.style.display = 'none';
-      closeSignupModal();
-    }, 2500);
-  }
-
-  function startTask(taskId) {
-    const task = tasks.find(t => t.id === taskId);
-    const button = event.target;
-    const spinner = button.querySelector('.spinner');
-    button.disabled = true;
-    spinner.style.display = 'inline-block';
-    
-    setTimeout(() => {
-      alert(`Starting task: ${task.title}\n\nYou will earn $${task.reward} upon completion.`);
-      button.disabled = false;
-      spinner.style.display = 'none';
-    }, 2500);
-  }
-
-  // FAQ accordion
-  document.querySelectorAll('.faq-question').forEach(question => {
-    question.addEventListener('click', function() {
-      const item = this.parentElement;
-      item.classList.toggle('active');
-    });
-  });
-
-  // Hamburger menu
-  const hamburger = document.getElementById('hamburger');
-  const nav = document.getElementById('nav');
-
-  hamburger.addEventListener('click', function() {
-    nav.classList.toggle('active');
-  });
-
-  // Close mobile menu when link is clicked
-  nav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', function() {
-      nav.classList.remove('active');
-    });
-  });
-
-  // Close modals on outside click
-  document.querySelectorAll('.modal').forEach(modal => {
-    modal.addEventListener('click', function(e) {
-      if (e.target === this) {
-        this.classList.remove('active');
+    // Check session in background (non-blocking)
+    sb.auth.getSession().then(function(result) {
+      if (result.data && result.data.session) {
+        window.location.href = 'app.html';
       }
+    }).catch(function(e) {
+      console.log('Session check error (non-critical):', e.message);
     });
+  }
+
+  // =============================================
+  // LOAD TASKS
+  // =============================================
+  function loadTasks() {
+    var grid = document.getElementById('tasksGrid');
+    if (!grid) return;
+    if (!sb) {
+      grid.innerHTML = '<div class="tasks-loading">Database not connected. Please refresh.</div>';
+      return;
+    }
+
+    sb.from('tasks')
+      .select('*')
+      .eq('is_active', true)
+      .order('id')
+      .then(function(result) {
+        if (result.error) {
+          console.error('Tasks error:', result.error);
+          grid.innerHTML = '<div class="tasks-loading">Could not load tasks. Please refresh the page.</div>';
+          return;
+        }
+        var tasks = result.data;
+        if (!tasks || tasks.length === 0) {
+          grid.innerHTML = '<div class="tasks-loading">No tasks available right now. Check back soon!</div>';
+          return;
+        }
+        grid.innerHTML = '';
+        tasks.forEach(function(task) {
+          var card = document.createElement('div');
+          card.className = 'task-card';
+          card.innerHTML =
+            (task.is_premium ? '<span class="task-badge">⭐ Premium</span>' : '') +
+            '<div class="task-title">' + esc(task.title) + '</div>' +
+            '<div class="task-desc">' + esc(task.description || 'Complete this task to earn rewards.') + '</div>' +
+            '<div class="task-reward">$' + parseFloat(task.reward).toFixed(2) + '</div>' +
+            '<button class="task-btn' + (task.is_premium ? ' premium' : '') + '" onclick="openModal(\'signup\')">' +
+              (task.is_premium ? '🔒 Unlock with Premium' : '▶ Start Task') +
+            '</button>';
+          grid.appendChild(card);
+        });
+      })
+      .catch(function(e) {
+        console.error('Tasks fetch error:', e);
+        grid.innerHTML = '<div class="tasks-loading">Could not load tasks. Please refresh the page.</div>';
+      });
+  }
+
+  // =============================================
+  // AUTH HANDLERS
+  // =============================================
+  window.handleLogin = function(event) {
+    event.preventDefault();
+    if (!sb) return;
+    var email = document.getElementById('loginEmail').value.trim();
+    var password = document.getElementById('loginPassword').value;
+    var btn = document.getElementById('loginBtn');
+    var spinner = document.getElementById('loginSpinner');
+
+    setLoading(btn, spinner, true);
+    hideAlerts('login');
+
+    sb.auth.signInWithPassword({ email: email, password: password })
+      .then(function(result) {
+        if (result.error) {
+          showAlert('loginAlert', result.error.message, 'error');
+          setLoading(btn, spinner, false);
+          return;
+        }
+        window.location.href = 'app.html';
+      })
+      .catch(function(e) {
+        showAlert('loginAlert', e.message, 'error');
+        setLoading(btn, spinner, false);
+      });
+  };
+
+  window.handleSignup = function(event) {
+    event.preventDefault();
+    if (!sb) return;
+    var name = document.getElementById('signupName').value.trim();
+    var email = document.getElementById('signupEmail').value.trim();
+    var password = document.getElementById('signupPassword').value;
+    var btn = document.getElementById('signupBtn');
+    var spinner = document.getElementById('signupSpinner');
+
+    if (!name) {
+      showAlert('signupAlert', 'Please enter your full name.', 'error');
+      return;
+    }
+
+    setLoading(btn, spinner, true);
+    hideAlerts('signup');
+
+    sb.auth.signUp({
+      email: email,
+      password: password,
+      options: {
+        data: { full_name: name },
+        emailRedirectTo: window.location.origin + '/app.html'
+      }
+    }).then(function(result) {
+      if (result.error) {
+        showAlert('signupAlert', result.error.message, 'error');
+        setLoading(btn, spinner, false);
+        return;
+      }
+      if (result.data && result.data.session) {
+        // Auto-confirmed
+        window.location.href = 'app.html';
+      } else {
+        showAlert('signupSuccess', '✅ Account created! Please check your email to verify your account, then sign in.', 'success');
+        setLoading(btn, spinner, false);
+        document.getElementById('signupForm').reset();
+      }
+    }).catch(function(e) {
+      showAlert('signupAlert', e.message, 'error');
+      setLoading(btn, spinner, false);
+    });
+  };
+
+  window.handleForgotPassword = function(event) {
+    event.preventDefault();
+    if (!sb) return;
+    var email = document.getElementById('forgotEmail').value.trim();
+    var btn = document.getElementById('forgotBtn');
+    var spinner = document.getElementById('forgotSpinner');
+
+    setLoading(btn, spinner, true);
+    hideAlerts('forgot');
+
+    sb.auth.resetPasswordForEmail(email, {
+      redirectTo: window.location.origin + '/app.html?reset=true'
+    }).then(function(result) {
+      if (result.error) {
+        showAlert('forgotAlert', result.error.message, 'error');
+      } else {
+        showAlert('forgotSuccess', '✅ Password reset link sent! Check your email inbox.', 'success');
+        document.getElementById('forgotForm').reset();
+      }
+      setLoading(btn, spinner, false);
+    }).catch(function(e) {
+      showAlert('forgotAlert', e.message, 'error');
+      setLoading(btn, spinner, false);
+    });
+  };
+
+  // =============================================
+  // MODAL HELPERS
+  // =============================================
+  window.openModal = function(name) {
+    document.querySelectorAll('.modal-overlay').forEach(function(m) { m.classList.remove('active'); });
+    var modal = document.getElementById(name + 'Modal');
+    if (modal) modal.classList.add('active');
+  };
+
+  window.closeModal = function(name) {
+    var modal = document.getElementById(name + 'Modal');
+    if (modal) modal.classList.remove('active');
+  };
+
+  // Close on overlay click
+  document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('modal-overlay')) {
+      e.target.classList.remove('active');
+    }
   });
 
-  // Populate tasks when page loads
-  document.addEventListener('DOMContentLoaded', populateTasks);
-</script>
+  // =============================================
+  // FAQ
+  // =============================================
+  window.toggleFaq = function(el) {
+    var item = el.parentElement;
+    var isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+    if (!isOpen) item.classList.add('open');
+  };
 
+  // =============================================
+  // MOBILE NAV
+  // =============================================
+  window.toggleNav = function() {
+    document.getElementById('mainNav').classList.toggle('open');
+  };
+
+  // =============================================
+  // UI HELPERS
+  // =============================================
+  function setLoading(btn, spinner, loading) {
+    btn.disabled = loading;
+    spinner.style.display = loading ? 'inline-block' : 'none';
+  }
+
+  function showAlert(id, msg, type) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.textContent = msg;
+    el.className = 'alert alert-' + type;
+    el.style.display = 'block';
+  }
+
+  function hideAlerts(prefix) {
+    ['Alert', 'Success'].forEach(function(suffix) {
+      var el = document.getElementById(prefix + suffix);
+      if (el) el.style.display = 'none';
+    });
+  }
+
+  function esc(str) {
+    if (!str) return '';
+    var d = document.createElement('div');
+    d.appendChild(document.createTextNode(String(str)));
+    return d.innerHTML;
+  }
+
+  // =============================================
+  // START
+  // =============================================
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+})();
+</script>
 </body>
 </html>

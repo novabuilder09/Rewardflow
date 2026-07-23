@@ -1,0 +1,5 @@
+{
+  "project_id": "dhebtkbhpueitcapmwcp",
+  "name": "public_tasks_read",
+  "query": "-- Allow anyone (including unauthenticated visitors) to read active tasks for the landing page\nDROP POLICY IF EXISTS \"Public can view active tasks\" ON public.tasks;\nCREATE POLICY \"Public can view active tasks\" ON public.tasks FOR SELECT USING (is_active = TRUE);\n\n-- Also allow public to read task count for stats display\nGRANT SELECT ON public.tasks TO anon;"
+}
