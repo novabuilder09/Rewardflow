@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /app.html
+Disallow: /admin
+Disallow: /private
+
+Sitemap: https://rewardflow.com/sitemap.xml
