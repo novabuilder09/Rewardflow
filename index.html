@@ -27,7 +27,7 @@
       --text-primary: #263238;
       --text-secondary: #5B6B82;
       --border-color: #e0e0e0;
-      --shadow: 0 2px 10px rgba(0,0,0,0.08);
+      --shadow: 0 4px 20px rgba(0,0,0,0.08);
       --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
       --radius: 8px;
       --radius-lg: 12px;
@@ -62,12 +62,42 @@
       transition: all 0.2s ease;
     }
 
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .page-content {
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-right: 8px;
+    }
+
     /* ===== HEADER & NAVIGATION ===== */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--card-bg);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
       border-bottom: 1px solid var(--border-color);
       box-shadow: var(--shadow);
     }
@@ -85,7 +115,7 @@
       font-family: 'Poppins', sans-serif;
       font-size: 24px;
       font-weight: 800;
-      color: var(--primary);
+      color: white;
       letter-spacing: -0.5px;
     }
 
@@ -102,16 +132,16 @@
     nav a {
       font-size: 14px;
       font-weight: 600;
-      color: var(--text-secondary);
+      color: white;
       transition: color 0.2s ease;
     }
 
     nav a:hover {
-      color: var(--primary);
+      color: var(--accent);
     }
 
     .nav-btn {
-      background: var(--primary);
+      background: var(--accent);
       color: white;
       padding: 10px 20px;
       border-radius: var(--radius);
@@ -122,9 +152,23 @@
     }
 
     .nav-btn:hover {
-      background: var(--secondary);
       transform: translateY(-2px);
       box-shadow: var(--shadow);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      border-radius: 2px;
+      transition: all 0.3s ease;
     }
 
     /* ===== HERO SECTION ===== */
@@ -173,12 +217,21 @@
       font-weight: 700;
       font-size: 16px;
       transition: all 0.2s ease;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
       box-shadow: var(--shadow-lg);
       opacity: 0.95;
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
     }
 
     .btn-secondary {
@@ -190,6 +243,10 @@
       font-weight: 700;
       font-size: 16px;
       transition: all 0.2s ease;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .btn-secondary:hover {
@@ -197,44 +254,8 @@
       box-shadow: var(--shadow-lg);
     }
 
-    /* ===== SOCIAL PROOF ===== */
-    .social-proof {
-      background: white;
-      padding: 24px 20px;
-      text-align: center;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .proof-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-
-    .proof-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .proof-number {
-      font-family: 'Poppins', sans-serif;
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--accent);
-    }
-
-    .proof-label {
-      font-size: 14px;
-      color: var(--text-secondary);
-      margin-top: 4px;
-    }
-
-    /* ===== HOW IT WORKS ===== */
-    .how-it-works {
+    /* ===== TESTIMONIALS ===== */
+    .testimonials {
       padding: 80px 20px;
       background: white;
     }
@@ -253,75 +274,6 @@
       color: var(--primary);
     }
 
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      margin-bottom: 40px;
-    }
-
-    .step {
-      text-align: center;
-      animation: fadeIn 0.6s ease forwards;
-    }
-
-    .step:nth-child(2) {
-      animation-delay: 0.1s;
-    }
-
-    .step:nth-child(3) {
-      animation-delay: 0.2s;
-    }
-
-    .step:nth-child(4) {
-      animation-delay: 0.3s;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .step-number {
-      width: 60px;
-      height: 60px;
-      background: var(--accent);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Poppins', sans-serif;
-      font-size: 24px;
-      font-weight: 800;
-      margin: 0 auto 20px;
-    }
-
-    .step h3 {
-      font-family: 'Poppins', sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      color: var(--primary);
-    }
-
-    .step p {
-      color: var(--text-secondary);
-      font-size: 15px;
-    }
-
-    /* ===== TESTIMONIALS ===== */
-    .testimonials {
-      padding: 80px 20px;
-      background: var(--background);
-    }
-
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -329,11 +281,12 @@
     }
 
     .testimonial {
-      background: white;
+      background: var(--card-bg);
       padding: 28px;
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow);
       transition: all 0.3s ease;
+      border-left: 4px solid var(--accent);
     }
 
     .testimonial:hover {
@@ -352,13 +305,7 @@
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      background: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: 700;
-      font-size: 18px;
+      object-fit: cover;
     }
 
     .testimonial-name {
@@ -377,20 +324,12 @@
       color: var(--text-primary);
       line-height: 1.6;
       font-style: italic;
-      border-left: 3px solid var(--accent);
-      padding-left: 16px;
-    }
-
-    .stars {
-      color: #ffc107;
-      font-size: 12px;
-      margin-bottom: 12px;
     }
 
     /* ===== FAQ ===== */
     .faq {
       padding: 80px 20px;
-      background: white;
+      background: var(--background);
     }
 
     .faq-container {
@@ -403,6 +342,7 @@
       border-radius: var(--radius-lg);
       margin-bottom: 12px;
       overflow: hidden;
+      background: white;
     }
 
     .faq-question {
@@ -443,105 +383,52 @@
       max-height: 500px;
     }
 
-    /* ===== STICKY CTA BAR ===== */
-    .sticky-cta {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: var(--primary);
-      color: white;
-      padding: 12px 20px;
-      text-align: center;
-      z-index: 99;
-      display: none;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    /* ===== TASKS SECTION ===== */
+    .tasks-section {
+      padding: 80px 20px;
+      background: white;
     }
 
-    .sticky-cta.show {
-      display: block;
-    }
-
-    .sticky-cta p {
-      margin: 0 0 8px;
-      font-size: 14px;
-    }
-
-    .sticky-cta button {
-      background: var(--accent);
-      color: white;
-      padding: 8px 20px;
-      border: none;
-      border-radius: var(--radius);
-      font-weight: 700;
-      font-size: 14px;
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: var(--primary);
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
+    .tasks-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      text-align: left;
-      margin-bottom: 30px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
     }
 
-    .footer-section h4 {
+    .task-card {
+      background: var(--card-bg);
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+      border-left: 4px solid var(--accent);
+    }
+
+    .task-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .task-title {
       font-family: 'Poppins', sans-serif;
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .task-description {
+      font-size: 14px;
+      color: var(--text-secondary);
       margin-bottom: 16px;
     }
 
-    .footer-section a {
-      display: block;
-      font-size: 14px;
-      margin-bottom: 8px;
-      opacity: 0.9;
-      transition: opacity 0.2s ease;
-    }
-
-    .footer-section a:hover {
-      opacity: 1;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding-top: 20px;
-      font-size: 14px;
-      opacity: 0.8;
-    }
-
-    .whatsapp-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 56px;
-      height: 56px;
-      background: #25D366;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 28px;
-      box-shadow: var(--shadow-lg);
-      z-index: 98;
-      transition: all 0.2s ease;
-      text-decoration: none;
-    }
-
-    .whatsapp-btn:hover {
-      transform: scale(1.1);
+    .task-reward {
+      font-family: 'Poppins', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 16px;
     }
 
     /* ===== MODAL ===== */
@@ -598,7 +485,8 @@
     }
 
     .form-group input,
-    .form-group textarea {
+    .form-group textarea,
+    .form-group select {
       width: 100%;
       padding: 12px;
       border: 1px solid var(--border-color);
@@ -609,20 +497,107 @@
     }
 
     .form-group input:focus,
-    .form-group textarea:focus {
+    .form-group textarea:focus,
+    .form-group select:focus {
       outline: none;
       border-color: var(--primary);
       box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
     }
 
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--primary);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      text-align: left;
+      margin-bottom: 30px;
+    }
+
+    .footer-section h4 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .footer-section a {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 8px;
+      opacity: 0.9;
+      transition: opacity 0.2s ease;
+    }
+
+    .footer-section a:hover {
+      opacity: 1;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    /* ===== WHATSAPP BUTTON ===== */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 56px;
+      height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 28px;
+      box-shadow: var(--shadow-lg);
+      z-index: 98;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.1);
+    }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
       nav {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        padding: 20px;
         gap: 16px;
       }
 
+      nav.active {
+        display: flex;
+      }
+
       nav a {
-        font-size: 13px;
+        font-size: 14px;
       }
 
       .hero {
@@ -637,34 +612,21 @@
         font-size: 16px;
       }
 
-      .proof-container {
-        gap: 20px;
-      }
-
       .section-title {
         font-size: 28px;
         margin-bottom: 40px;
-      }
-
-      .steps-grid {
-        gap: 24px;
       }
 
       .modal-content {
         padding: 24px;
       }
 
-      .sticky-cta {
-        padding: 8px 12px;
+      .testimonials-grid {
+        grid-template-columns: 1fr;
       }
 
-      .sticky-cta p {
-        font-size: 12px;
-      }
-
-      .sticky-cta button {
-        padding: 6px 16px;
-        font-size: 12px;
+      .tasks-grid {
+        grid-template-columns: 1fr;
       }
 
       .footer-content {
@@ -686,19 +648,6 @@
 
       .logo {
         font-size: 20px;
-      }
-
-      nav {
-        gap: 8px;
-      }
-
-      nav a {
-        display: none;
-      }
-
-      .nav-btn {
-        padding: 8px 16px;
-        font-size: 12px;
       }
 
       .hero {
@@ -723,46 +672,24 @@
         font-size: 14px;
       }
 
-      .proof-number {
-        font-size: 24px;
-      }
-
-      .proof-label {
-        font-size: 12px;
-      }
-
       .section-title {
         font-size: 24px;
       }
 
-      .step-number {
-        width: 48px;
-        height: 48px;
-        font-size: 20px;
+      .testimonials {
+        padding: 40px 16px;
       }
 
-      .step h3 {
-        font-size: 16px;
+      .tasks-section {
+        padding: 40px 16px;
       }
 
-      .step p {
-        font-size: 13px;
+      .faq {
+        padding: 40px 16px;
       }
 
-      .testimonial {
+      .modal-content {
         padding: 20px;
-      }
-
-      .faq-question {
-        padding: 16px;
-      }
-
-      .faq-answer {
-        padding: 0 16px;
-      }
-
-      .faq-item.active .faq-answer {
-        padding: 0 16px 16px;
       }
 
       .whatsapp-btn {
@@ -772,31 +699,6 @@
         bottom: 16px;
         right: 16px;
       }
-
-      .modal-content {
-        padding: 20px;
-      }
-    }
-
-    /* ===== LOADING SPINNER ===== */
-    .spinner {
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      border: 2px solid rgba(255,255,255,0.3);
-      border-top-color: white;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin-right: 8px;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    .btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
     }
   </style>
 </head>
@@ -806,143 +708,106 @@
 <header>
   <div class="header-container">
     <div class="logo">Reward<span class="accent">Flow</span></div>
-    <nav>
-      <a href="#how-it-works">How It Works</a>
+    <nav id="nav">
+      <a href="#tasks">Tasks</a>
       <a href="#testimonials">Testimonials</a>
       <a href="#faq">FAQ</a>
       <button class="nav-btn" onclick="openLoginModal()">Sign In</button>
     </nav>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </div>
 </header>
 
 <!-- HERO SECTION -->
-<section class="hero">
+<section class="hero page-content">
   <div class="hero-container">
     <h1>Turn Spare Minutes Into Real Earnings</h1>
     <p>Complete simple tasks, watch ads, download apps, and get paid instantly. No experience needed. Join thousands of users earning daily.</p>
     <div class="hero-cta">
       <button class="btn-primary" onclick="openSignupModal()">Start Earning Now</button>
-      <button class="btn-secondary" onclick="document.getElementById('how-it-works').scrollIntoView()">Learn More</button>
+      <button class="btn-secondary" onclick="document.getElementById('tasks').scrollIntoView()">Learn More</button>
     </div>
   </div>
 </section>
 
-<!-- SOCIAL PROOF -->
-<section class="social-proof">
-  <div class="proof-container">
-    <div class="proof-item">
-      <div class="proof-number">50K+</div>
-      <div class="proof-label">Active Users</div>
-    </div>
-    <div class="proof-item">
-      <div class="proof-number">$2.5M+</div>
-      <div class="proof-label">Paid Out</div>
-    </div>
-    <div class="proof-item">
-      <div class="proof-number">100K+</div>
-      <div class="proof-label">Tasks Completed</div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="how-it-works" id="how-it-works">
-  <div class="section-container">
-    <h2 class="section-title">How It Works</h2>
-    <div class="steps-grid">
-      <div class="step">
-        <div class="step-number">1</div>
-        <h3>Sign Up</h3>
-        <p>Create your free account in under 2 minutes with just your email.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">2</div>
-        <h3>Choose Tasks</h3>
-        <p>Browse available tasks and select ones that interest you.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">3</div>
-        <h3>Complete & Earn</h3>
-        <p>Complete tasks and submit proof. Rewards are added instantly.</p>
-      </div>
-      <div class="step">
-        <div class="step-number">4</div>
-        <h3>Withdraw</h3>
-        <p>Reach $50 and withdraw your earnings anytime.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
+<!-- TESTIMONIALS SECTION -->
 <section class="testimonials" id="testimonials">
   <div class="section-container">
     <h2 class="section-title">What Our Users Say</h2>
     <div class="testimonials-grid">
       <div class="testimonial">
-        <div class="stars">★★★★★</div>
         <div class="testimonial-header">
-          <div class="testimonial-avatar">MS</div>
+          <img src="https://i.pravatar.cc/150?img=1" alt="Maria Santos" class="testimonial-avatar">
           <div>
             <div class="testimonial-name">Maria Santos</div>
             <div class="testimonial-location">Philippines</div>
           </div>
         </div>
-        <div class="testimonial-quote">"I earned $450 in my first week! The tasks are so easy and the payouts are fast. Highly recommend!"</div>
+        <div class="testimonial-quote">"I earned $450 in my first week! The tasks are so easy."</div>
       </div>
 
       <div class="testimonial">
-        <div class="stars">★★★★★</div>
         <div class="testimonial-header">
-          <div class="testimonial-avatar">AK</div>
+          <img src="https://i.pravatar.cc/150?img=2" alt="Ahmed Khan" class="testimonial-avatar">
           <div>
             <div class="testimonial-name">Ahmed Khan</div>
             <div class="testimonial-location">Pakistan</div>
           </div>
         </div>
-        <div class="testimonial-quote">"$320 in 10 days! This is the most legit platform I've found. Great support team too."</div>
+        <div class="testimonial-quote">"$320 in 10 days! Highly recommend RewardFlow."</div>
       </div>
 
       <div class="testimonial">
-        <div class="stars">★★★★★</div>
         <div class="testimonial-header">
-          <div class="testimonial-avatar">CO</div>
+          <img src="https://i.pravatar.cc/150?img=3" alt="Chinwe Okafor" class="testimonial-avatar">
           <div>
             <div class="testimonial-name">Chinwe Okafor</div>
             <div class="testimonial-location">Nigeria</div>
           </div>
         </div>
-        <div class="testimonial-quote">"The app testing tasks are simple. Made $280 already and I'm just getting started!"</div>
+        <div class="testimonial-quote">"The app testing tasks are simple. Made $280 already."</div>
       </div>
 
       <div class="testimonial">
-        <div class="stars">★★★★★</div>
         <div class="testimonial-header">
-          <div class="testimonial-avatar">SR</div>
+          <img src="https://i.pravatar.cc/150?img=4" alt="Siti Rahayu" class="testimonial-avatar">
           <div>
             <div class="testimonial-name">Siti Rahayu</div>
             <div class="testimonial-location">Indonesia</div>
           </div>
         </div>
-        <div class="testimonial-quote">"$500 in two weeks. This is a life-changing opportunity. Thank you RewardFlow!"</div>
+        <div class="testimonial-quote">"$500 in two weeks. Life-changing opportunity."</div>
       </div>
 
       <div class="testimonial">
-        <div class="stars">★★★★★</div>
         <div class="testimonial-header">
-          <div class="testimonial-avatar">DO</div>
+          <img src="https://i.pravatar.cc/150?img=5" alt="David Ochieng" class="testimonial-avatar">
           <div>
             <div class="testimonial-name">David Ochieng</div>
             <div class="testimonial-location">Kenya</div>
           </div>
         </div>
-        <div class="testimonial-quote">"Premium upgrade was worth it. Now earning $50/day consistently. Best decision ever!"</div>
+        <div class="testimonial-quote">"Premium upgrade was worth it. Now earning $50/day."</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
+<!-- TASKS SECTION -->
+<section class="tasks-section" id="tasks">
+  <div class="section-container">
+    <h2 class="section-title">Available Tasks</h2>
+    <div class="tasks-grid" id="tasksGrid">
+      <!-- Tasks will be populated by JavaScript -->
+    </div>
+  </div>
+</section>
+
+<!-- FAQ SECTION -->
 <section class="faq" id="faq">
   <div class="section-container">
     <h2 class="section-title">Frequently Asked Questions</h2>
@@ -952,7 +817,7 @@
           <span>How do I earn?</span>
           <span class="faq-toggle">▼</span>
         </div>
-        <div class="faq-answer">Sign up, complete tasks from your dashboard, submit proof, and get paid. It's that simple! Tasks include watching ads, downloading apps, completing surveys, and more.</div>
+        <div class="faq-answer">Sign up, complete tasks from your dashboard, submit proof, and get paid.</div>
       </div>
 
       <div class="faq-item">
@@ -960,7 +825,7 @@
           <span>When do I get paid?</span>
           <span class="faq-toggle">▼</span>
         </div>
-        <div class="faq-answer">Withdrawals are processed within 24-48 hours after reaching $50. You'll receive a notification once your payment is on the way.</div>
+        <div class="faq-answer">Withdrawals are processed within 24-48 hours after reaching $50.</div>
       </div>
 
       <div class="faq-item">
@@ -968,7 +833,7 @@
           <span>What is the activation fee?</span>
           <span class="faq-toggle">▼</span>
         </div>
-        <div class="faq-answer">There is no activation fee to get started. However, our Premium membership costs $15 USDT and gives you access to higher-paying tasks and priority support.</div>
+        <div class="faq-answer">$15 one-time fee to unlock premium tasks that pay up to $15 each.</div>
       </div>
 
       <div class="faq-item">
@@ -976,7 +841,7 @@
           <span>Is this legit?</span>
           <span class="faq-toggle">▼</span>
         </div>
-        <div class="faq-answer">Yes, we have thousands of satisfied users worldwide and have paid out over $2.5 million. Check our testimonials and join our community today!</div>
+        <div class="faq-answer">Yes, we have thousands of satisfied users worldwide. Check our testimonials. <a href="https://wa.me/447379343980" target="_blank" style="color: var(--accent); font-weight: 600;">Contact us on WhatsApp</a></div>
       </div>
 
       <div class="faq-item">
@@ -984,17 +849,11 @@
           <span>How do I contact support?</span>
           <span class="faq-toggle">▼</span>
         </div>
-        <div class="faq-answer">You can reach our support team via WhatsApp at +447379343980. We're available 24/7 to help with any questions or issues.</div>
+        <div class="faq-answer">WhatsApp: <a href="https://wa.me/447379343980" target="_blank" style="color: var(--accent); font-weight: 600;">+447379343980</a></div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- STICKY CTA BAR -->
-<div class="sticky-cta" id="stickyCta">
-  <p>Limited spots available! Join 50,000+ users earning daily.</p>
-  <button class="btn-primary" onclick="openSignupModal()">Start Earning - It's Free</button>
-</div>
 
 <!-- FOOTER -->
 <footer>
@@ -1040,7 +899,10 @@
         <label for="login-password">Password</label>
         <input type="password" id="login-password" placeholder="••••••••" required>
       </div>
-      <button type="submit" class="btn-primary" style="width: 100%; margin-top: 24px;">Sign In</button>
+      <button type="submit" class="btn-primary" style="width: 100%; margin-top: 24px;">
+        <span class="spinner" id="loginSpinner" style="display: none;"></span>
+        Sign In
+      </button>
     </form>
     <p style="text-align: center; margin-top: 16px; font-size: 14px; color: var(--text-secondary);">
       Don't have an account? <a href="#" onclick="switchToSignup()" style="color: var(--primary); font-weight: 600;">Create one</a>
@@ -1066,7 +928,10 @@
         <label for="signup-password">Password</label>
         <input type="password" id="signup-password" placeholder="••••••••" required>
       </div>
-      <button type="submit" class="btn-primary" style="width: 100%; margin-top: 24px;">Create Account</button>
+      <button type="submit" class="btn-primary" style="width: 100%; margin-top: 24px;">
+        <span class="spinner" id="signupSpinner" style="display: none;"></span>
+        Create Account
+      </button>
     </form>
     <p style="text-align: center; margin-top: 16px; font-size: 14px; color: var(--text-secondary);">
       Already have an account? <a href="#" onclick="switchToLogin()" style="color: var(--primary); font-weight: 600;">Sign in</a>
@@ -1075,6 +940,41 @@
 </div>
 
 <script>
+  // Tasks data - exactly 15 tasks as specified
+  const tasks = [
+    { id: 1, title: "Test Shopping App", reward: 4, description: "Download the app, browse products for 2 minutes, take a screenshot" },
+    { id: 2, title: "Watch 2-Minute Ad", reward: 2, description: "Watch the full advertisement, describe what you saw" },
+    { id: 3, title: "Review Music Video", reward: 3, description: "Watch the music video, leave a 3-sentence review" },
+    { id: 4, title: "Complete Market Survey", reward: 5, description: "Answer 10 questions about consumer preferences" },
+    { id: 5, title: "Test Game App", reward: 6, description: "Download the game, play for 5 minutes, submit a screenshot of your high score" },
+    { id: 6, title: "Leave Google Review", reward: 4, description: "Leave a 5-star review for a partner business" },
+    { id: 7, title: "Watch Crypto Tutorial", reward: 7, description: "Watch the 5-minute tutorial, summarize what you learned" },
+    { id: 8, title: "Test Fitness App", reward: 5, description: "Download the app, complete one workout, submit screenshot" },
+    { id: 9, title: "Complete Feedback Form", reward: 3, description: "Fill out a 5-question feedback form" },
+    { id: 10, title: "Test Social Media App", reward: 8, description: "Create a post, take a screenshot of the engagement" },
+    { id: 11, title: "Rate YouTube Video", reward: 2, description: "Watch and rate a video on a scale of 1 to 5" },
+    { id: 12, title: "Test Food Delivery App", reward: 5, description: "Browse the menu, add items to cart, take a screenshot" },
+    { id: 13, title: "Review E-book", reward: 4, description: "Read the first chapter, write a 2-sentence review" },
+    { id: 14, title: "Test Travel App", reward: 6, description: "Search for a flight, submit a screenshot of search results" },
+    { id: 15, title: "Complete Quick Poll", reward: 1, description: "Answer 3 simple yes or no questions" }
+  ];
+
+  // Populate tasks on page load
+  function populateTasks() {
+    const tasksGrid = document.getElementById('tasksGrid');
+    tasksGrid.innerHTML = tasks.map(task => `
+      <div class="task-card">
+        <div class="task-title">${task.title}</div>
+        <div class="task-description">${task.description}</div>
+        <div class="task-reward">$${task.reward}</div>
+        <button class="btn-primary" onclick="startTask(${task.id})">
+          <span class="spinner" style="display: none;"></span>
+          Start Task
+        </button>
+      </div>
+    `).join('');
+  }
+
   // Modal functions
   function openLoginModal() {
     document.getElementById('loginModal').classList.add('active');
@@ -1102,24 +1002,49 @@
     openLoginModal();
   }
 
-  // Form handlers
+  // Form handlers with loading spinners
   function handleLogin(e) {
     e.preventDefault();
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-password').value;
-    console.log('Login:', email, password);
-    alert('Login functionality will be implemented with backend integration.');
-    closeLoginModal();
+    const button = e.target.querySelector('button');
+    const spinner = button.querySelector('.spinner');
+    button.disabled = true;
+    spinner.style.display = 'inline-block';
+    
+    setTimeout(() => {
+      alert('Login functionality will be implemented with backend integration.');
+      button.disabled = false;
+      spinner.style.display = 'none';
+      closeLoginModal();
+    }, 2500);
   }
 
   function handleSignup(e) {
     e.preventDefault();
-    const name = document.getElementById('signup-name').value;
-    const email = document.getElementById('signup-email').value;
-    const password = document.getElementById('signup-password').value;
-    console.log('Signup:', name, email, password);
-    alert('Signup functionality will be implemented with backend integration.');
-    closeSignupModal();
+    const button = e.target.querySelector('button');
+    const spinner = button.querySelector('.spinner');
+    button.disabled = true;
+    spinner.style.display = 'inline-block';
+    
+    setTimeout(() => {
+      alert('Signup functionality will be implemented with backend integration.');
+      button.disabled = false;
+      spinner.style.display = 'none';
+      closeSignupModal();
+    }, 2500);
+  }
+
+  function startTask(taskId) {
+    const task = tasks.find(t => t.id === taskId);
+    const button = event.target;
+    const spinner = button.querySelector('.spinner');
+    button.disabled = true;
+    spinner.style.display = 'inline-block';
+    
+    setTimeout(() => {
+      alert(`Starting task: ${task.title}\n\nYou will earn $${task.reward} upon completion.`);
+      button.disabled = false;
+      spinner.style.display = 'none';
+    }, 2500);
   }
 
   // FAQ accordion
@@ -1130,14 +1055,19 @@
     });
   });
 
-  // Sticky CTA bar
-  window.addEventListener('scroll', function() {
-    const stickyCta = document.getElementById('stickyCta');
-    if (window.scrollY > 300) {
-      stickyCta.classList.add('show');
-    } else {
-      stickyCta.classList.remove('show');
-    }
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const nav = document.getElementById('nav');
+
+  hamburger.addEventListener('click', function() {
+    nav.classList.toggle('active');
+  });
+
+  // Close mobile menu when link is clicked
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', function() {
+      nav.classList.remove('active');
+    });
   });
 
   // Close modals on outside click
@@ -1148,6 +1078,9 @@
       }
     });
   });
+
+  // Populate tasks when page loads
+  document.addEventListener('DOMContentLoaded', populateTasks);
 </script>
 
 </body>
