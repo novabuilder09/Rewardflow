@@ -3,644 +3,586 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <meta name="description" content="RewardFlow - Earn real money by completing simple micro-tasks. Watch ads, download apps, complete surveys, and get paid instantly.">
-  <title>RewardFlow - Earn Money by Completing Simple Tasks</title>
+  <meta name="description" content="RewardFlow is a task-reward platform where members can explore approved tasks, submit completion evidence, and receive rewards after review.">
+  <title>RewardFlow | Complete Approved Tasks, Earn Rewards</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #1a237e;
-      --secondary: #0d47a1;
-      --accent: #00c853;
-      --bg: #f5f7fa;
-      --card: #ffffff;
-      --text: #263238;
-      --muted: #5B6B82;
-      --border: #e0e0e0;
-      --danger: #d32f2f;
-      --shadow: 0 4px 20px rgba(0,0,0,0.08);
-      --radius: 8px;
+      --navy: #102a43;
+      --navy-2: #173f66;
+      --teal: #0f766e;
+      --teal-dark: #115e59;
+      --mint: #d1fae5;
+      --gold: #b7791f;
+      --gold-bg: #fffbeb;
+      --ink: #1f2937;
+      --muted: #5d6b7f;
+      --surface: #ffffff;
+      --surface-soft: #f7fafc;
+      --line: #dbe4ee;
+      --danger: #b42318;
+      --danger-bg: #fef3f2;
+      --success: #067647;
+      --success-bg: #ecfdf3;
+      --info: #175cd3;
+      --info-bg: #eff8ff;
+      --radius: 16px;
+      --shadow: 0 18px 45px rgba(16, 42, 67, 0.10);
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; }
-    a { text-decoration: none; color: inherit; }
-    button { font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.2s; }
+    body { background: var(--surface-soft); color: var(--ink); font-family: 'DM Sans', sans-serif; line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
     @keyframes spin { to { transform: rotate(360deg); } }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes lift { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* HEADER */
-    header { position: sticky; top: 0; z-index: 100; background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%); box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
-    .header-inner { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-family: 'Poppins', sans-serif; font-size: 24px; font-weight: 800; color: white; }
-    .logo span { color: var(--accent); }
-    nav { display: flex; align-items: center; gap: 24px; }
-    nav a { color: rgba(255,255,255,0.85); font-size: 14px; font-weight: 500; }
-    nav a:hover { color: white; }
-    .btn-signin { background: var(--accent); color: #1a237e !important; padding: 8px 20px; border-radius: 6px; font-weight: 700; font-size: 14px; border: none; }
-    .btn-signin:hover { background: #00e676; }
-    .hamburger { display: none; background: none; border: none; color: white; font-size: 24px; }
+    /* Header */
+    .site-header { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.96); border-bottom: 1px solid rgba(219,228,238,0.9); backdrop-filter: blur(12px); }
+    .header-inner { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { color: var(--navy); font-family: 'Manrope', sans-serif; font-size: 23px; font-weight: 800; letter-spacing: -0.7px; }
+    .brand span { color: var(--teal); }
+    .main-nav { display: flex; align-items: center; gap: 24px; }
+    .main-nav a { color: #40536b; font-size: 14px; font-weight: 600; }
+    .main-nav a:hover { color: var(--teal); }
+    .btn { align-items: center; border: 1px solid transparent; border-radius: 10px; display: inline-flex; font-size: 14px; font-weight: 700; justify-content: center; min-height: 44px; padding: 0 18px; transition: transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease; }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { background: var(--teal); color: white; box-shadow: 0 8px 18px rgba(15,118,110,.18); }
+    .btn-primary:hover { background: var(--teal-dark); }
+    .btn-secondary { background: white; border-color: #b9c6d4; color: var(--navy); }
+    .btn-secondary:hover { border-color: var(--navy); }
+    .btn-small { min-height: 38px; padding: 0 14px; }
+    .menu-toggle { background: transparent; border: 0; color: var(--navy); display: none; font-size: 22px; height: 40px; width: 40px; }
 
-    /* HERO */
-    .hero { background: linear-gradient(135deg, #1a237e 0%, #0d47a1 60%, #1565c0 100%); color: white; padding: 80px 24px; text-align: center; }
-    .hero h1 { font-family: 'Poppins', sans-serif; font-size: clamp(28px, 5vw, 52px); font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
-    .hero p { font-size: 18px; opacity: 0.9; max-width: 600px; margin: 0 auto 32px; }
-    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .btn-primary { background: var(--accent); color: #1a237e; padding: 14px 32px; border-radius: 8px; font-weight: 700; font-size: 16px; border: none; }
-    .btn-primary:hover { background: #00e676; transform: translateY(-1px); }
-    .btn-outline { background: transparent; color: white; padding: 14px 32px; border-radius: 8px; font-weight: 600; font-size: 16px; border: 2px solid rgba(255,255,255,0.5); }
-    .btn-outline:hover { border-color: white; background: rgba(255,255,255,0.1); }
+    /* Hero */
+    .hero { background: linear-gradient(118deg, #0f2f50 0%, #173f66 55%, #0c6b63 125%); color: white; overflow: hidden; padding: 84px 0 76px; position: relative; }
+    .hero::before { background: rgba(255,255,255,.08); border-radius: 50%; content: ''; height: 460px; position: absolute; right: -160px; top: -260px; width: 460px; }
+    .hero::after { border: 1px solid rgba(255,255,255,.14); border-radius: 50%; content: ''; height: 310px; position: absolute; right: 8%; bottom: -225px; width: 310px; }
+    .hero-grid { align-items: center; display: grid; gap: 48px; grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr); position: relative; z-index: 1; }
+    .eyebrow { color: var(--teal); font-size: 12px; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+    .hero .eyebrow { align-items: center; color: #a7f3d0; display: inline-flex; gap: 8px; }
+    .hero .eyebrow::before { background: #6ee7b7; border-radius: 50%; content: ''; height: 8px; width: 8px; }
+    h1, h2, h3 { font-family: 'Manrope', sans-serif; line-height: 1.18; }
+    .hero h1 { font-size: clamp(38px, 5vw, 62px); letter-spacing: -2px; margin: 16px 0 20px; max-width: 720px; }
+    .hero-copy { color: rgba(255,255,255,.84); font-size: 18px; max-width: 670px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .hero .btn-secondary { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.42); color: white; }
+    .hero .btn-secondary:hover { background: rgba(255,255,255,.16); border-color: rgba(255,255,255,.75); }
+    .hero-trust { display: flex; flex-wrap: wrap; gap: 12px 18px; margin-top: 24px; }
+    .hero-trust span { color: rgba(255,255,255,.78); font-size: 13px; font-weight: 600; }
+    .hero-trust span::before { color: #a7f3d0; content: '✓'; font-weight: 800; margin-right: 7px; }
+    .hero-card { background: rgba(255,255,255,.97); border: 1px solid rgba(255,255,255,.65); border-radius: 20px; box-shadow: 0 22px 50px rgba(0,0,0,.16); color: var(--ink); padding: 25px; }
+    .hero-card-header { align-items: center; border-bottom: 1px solid var(--line); display: flex; gap: 12px; padding-bottom: 16px; }
+    .hero-card-icon { align-items: center; background: #e6fffa; border-radius: 12px; color: var(--teal); display: flex; font-family: 'Manrope', sans-serif; font-size: 18px; font-weight: 800; height: 42px; justify-content: center; width: 42px; }
+    .hero-card-title { color: var(--navy); font-family: 'Manrope', sans-serif; font-size: 15px; font-weight: 800; }
+    .hero-card-sub { color: var(--muted); font-size: 12px; }
+    .process-list { list-style: none; margin-top: 16px; }
+    .process-list li { align-items: flex-start; display: flex; gap: 12px; padding: 12px 0; }
+    .process-list li + li { border-top: 1px solid #edf2f7; }
+    .process-number { align-items: center; background: var(--surface-soft); border: 1px solid var(--line); border-radius: 50%; color: var(--teal); display: flex; flex: 0 0 28px; font-size: 12px; font-weight: 800; height: 28px; justify-content: center; }
+    .process-list strong { color: var(--navy); display: block; font-size: 14px; }
+    .process-list p { color: var(--muted); font-size: 12px; margin-top: 2px; }
 
-    /* STATS */
-    .stats { background: white; padding: 40px 24px; }
-    .stats-inner { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 24px; text-align: center; }
-    .stat-num { font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: 800; color: var(--primary); }
-    .stat-label { color: var(--muted); font-size: 14px; margin-top: 4px; }
+    /* Shared sections */
+    section { padding: 82px 0; }
+    .section-heading { margin: 0 auto 38px; max-width: 690px; text-align: center; }
+    .section-heading h2 { color: var(--navy); font-size: clamp(28px, 3.4vw, 40px); letter-spacing: -1.1px; margin: 9px 0 12px; }
+    .section-heading p { color: var(--muted); font-size: 16px; }
+    .section-heading .eyebrow { display: block; }
 
-    /* SECTION */
-    section { padding: 60px 24px; }
-    .section-inner { max-width: 1200px; margin: 0 auto; }
-    .section-title { font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: 700; color: var(--primary); text-align: center; margin-bottom: 12px; }
-    .section-sub { text-align: center; color: var(--muted); margin-bottom: 40px; }
+    /* Trust/clarity */
+    .clarity-section { background: white; border-bottom: 1px solid var(--line); }
+    .clarity-grid { display: grid; gap: 18px; grid-template-columns: repeat(3, 1fr); }
+    .clarity-card { background: var(--surface-soft); border: 1px solid #e6edf3; border-radius: var(--radius); padding: 23px; }
+    .clarity-card h3 { color: var(--navy); font-size: 17px; margin: 13px 0 7px; }
+    .clarity-card p { color: var(--muted); font-size: 14px; }
+    .clarity-mark { align-items: center; background: #e6fffa; border-radius: 10px; color: var(--teal); display: flex; font-family: 'Manrope', sans-serif; font-weight: 800; height: 34px; justify-content: center; width: 34px; }
 
-    /* TESTIMONIALS */
-    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
-    .testimonial-card { background: white; border-radius: 12px; padding: 20px; box-shadow: var(--shadow); border-left: 4px solid var(--accent); animation: fadeIn 0.5s ease; }
-    .testimonial-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-    .testimonial-header img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
-    .testimonial-name { font-weight: 600; font-size: 14px; }
-    .testimonial-country { color: var(--muted); font-size: 12px; }
-    .testimonial-text { color: var(--muted); font-size: 14px; font-style: italic; }
+    /* How it works */
+    .steps-grid { display: grid; gap: 18px; grid-template-columns: repeat(3, 1fr); }
+    .step-card { background: white; border: 1px solid var(--line); border-radius: var(--radius); min-height: 220px; padding: 26px; position: relative; }
+    .step-no { color: #b7c6d8; font-family: 'Manrope', sans-serif; font-size: 44px; font-weight: 800; line-height: 1; }
+    .step-card h3 { color: var(--navy); font-size: 18px; margin: 26px 0 9px; }
+    .step-card p { color: var(--muted); font-size: 14px; }
 
-    /* TASKS */
-    .tasks-section { background: var(--bg); }
-    .tasks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
-    .task-card { background: white; border-radius: 12px; padding: 24px; box-shadow: var(--shadow); position: relative; animation: fadeIn 0.4s ease; }
-    .task-badge { display: inline-block; background: linear-gradient(135deg, #f59e0b, #d97706); color: white; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-bottom: 12px; }
-    .task-title { font-weight: 700; font-size: 16px; color: var(--primary); margin-bottom: 8px; }
-    .task-desc { color: var(--muted); font-size: 13px; margin-bottom: 16px; line-height: 1.5; }
-    .task-reward { font-size: 24px; font-weight: 800; color: var(--accent); margin-bottom: 16px; }
-    .task-btn { width: 100%; padding: 10px; background: var(--primary); color: white; border: none; border-radius: 6px; font-weight: 600; font-size: 14px; }
-    .task-btn:hover { background: var(--secondary); }
-    .task-btn.premium { background: linear-gradient(135deg, #f59e0b, #d97706); }
-    .task-btn.premium:hover { background: linear-gradient(135deg, #d97706, #b45309); }
-    .tasks-loading { text-align: center; padding: 60px; color: var(--muted); grid-column: 1/-1; }
-    .spinner-icon { display: inline-block; width: 32px; height: 32px; border: 3px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 12px; }
+    /* Categories */
+    .categories-section { background: var(--navy); color: white; }
+    .categories-section .section-heading h2 { color: white; }
+    .categories-section .section-heading p { color: rgba(255,255,255,.75); }
+    .categories-section .eyebrow { color: #a7f3d0; }
+    .categories-grid { display: grid; gap: 16px; grid-template-columns: repeat(5, 1fr); }
+    .category-card { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 14px; min-height: 170px; padding: 20px; }
+    .category-kicker { color: #a7f3d0; font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .category-card h3 { font-size: 17px; margin: 12px 0 8px; }
+    .category-card p { color: rgba(255,255,255,.72); font-size: 13px; }
+
+    /* Live task preview */
+    .tasks-section { background: #f1f6fa; }
+    .task-toolbar { align-items: center; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: -8px auto 28px; }
+    .filter-chip { background: white; border: 1px solid var(--line); border-radius: 999px; color: #43546b; font-size: 13px; font-weight: 700; min-height: 36px; padding: 0 14px; }
+    .filter-chip:hover, .filter-chip.active { background: var(--navy); border-color: var(--navy); color: white; }
+    .tasks-grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+    .task-card { background: white; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 8px 20px rgba(16,42,67,.04); display: flex; flex-direction: column; min-height: 280px; overflow: hidden; padding: 20px; transition: transform .18s ease, box-shadow .18s ease; }
+    .task-card:hover { box-shadow: 0 16px 32px rgba(16,42,67,.10); transform: translateY(-3px); }
+    .task-card-top { align-items: center; display: flex; gap: 8px; justify-content: space-between; }
+    .task-category, .task-status { border-radius: 999px; display: inline-flex; font-size: 11px; font-weight: 800; line-height: 1; padding: 7px 9px; }
+    .task-category { background: #edf7f6; color: var(--teal); }
+    .task-status.free { background: #ecfdf3; color: var(--success); }
+    .task-status.premium { background: var(--gold-bg); color: #935d0a; }
+    .task-card h3 { color: var(--navy); font-size: 17px; letter-spacing: -.25px; margin: 17px 0 8px; }
+    .task-card p { color: var(--muted); font-size: 13px; }
+    .task-footer { align-items: flex-end; border-top: 1px solid #edf2f7; display: flex; justify-content: space-between; gap: 14px; margin-top: auto; padding-top: 17px; }
+    .task-reward-label { color: var(--muted); font-size: 11px; font-weight: 700; text-transform: uppercase; }
+    .task-reward { color: var(--navy); font-family: 'Manrope', sans-serif; font-size: 22px; font-weight: 800; }
+    .task-card .btn { min-height: 38px; font-size: 12px; padding: 0 12px; }
+    .task-empty { background: white; border: 1px dashed #b9c6d4; border-radius: 14px; color: var(--muted); grid-column: 1 / -1; padding: 42px 20px; text-align: center; }
+    .task-empty .spinner { display: block; margin: 0 auto 14px; }
+    .spinner { animation: spin .8s linear infinite; border: 3px solid #d9e3ee; border-radius: 50%; border-top-color: var(--teal); height: 28px; width: 28px; }
+    .task-note { color: var(--muted); font-size: 12px; margin: 22px auto 0; max-width: 700px; text-align: center; }
+
+    /* Premium */
+    .membership-section { background: white; }
+    .membership-grid { align-items: stretch; display: grid; gap: 24px; grid-template-columns: .95fr 1.05fr; }
+    .membership-summary { background: linear-gradient(145deg, #102a43, #174b67); border-radius: 18px; color: white; padding: 34px; }
+    .membership-summary .eyebrow { color: #a7f3d0; }
+    .membership-summary h2 { font-size: clamp(30px, 3.2vw, 40px); letter-spacing: -1px; margin: 12px 0; }
+    .membership-summary p { color: rgba(255,255,255,.78); font-size: 15px; }
+    .price-row { align-items: baseline; border-bottom: 1px solid rgba(255,255,255,.18); display: flex; gap: 10px; margin: 26px 0 22px; padding-bottom: 22px; }
+    .price-row strong { color: #a7f3d0; font-family: 'Manrope', sans-serif; font-size: 46px; letter-spacing: -2px; }
+    .price-row span { color: rgba(255,255,255,.76); font-size: 13px; font-weight: 700; }
+    .membership-details { background: #f7fafc; border: 1px solid var(--line); border-radius: 18px; padding: 30px; }
+    .membership-details h3 { color: var(--navy); font-size: 22px; }
+    .benefit-list { list-style: none; margin-top: 18px; }
+    .benefit-list li { color: #40536b; font-size: 14px; padding: 10px 0 10px 28px; position: relative; }
+    .benefit-list li + li { border-top: 1px solid #e7edf3; }
+    .benefit-list li::before { color: var(--teal); content: '✓'; font-weight: 800; left: 4px; position: absolute; }
+    .membership-disclaimer { background: var(--gold-bg); border: 1px solid #fde68a; border-radius: 10px; color: #6b4a13; font-size: 13px; margin-top: 21px; padding: 13px 14px; }
 
     /* FAQ */
-    .faq-section { background: white; }
-    .faq-list { max-width: 700px; margin: 0 auto; }
-    .faq-item { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 12px; overflow: hidden; }
-    .faq-q { padding: 16px 20px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: white; }
-    .faq-q:hover { background: #f8f9fa; }
-    .faq-arrow { transition: transform 0.2s; font-size: 12px; color: var(--muted); }
-    .faq-item.open .faq-arrow { transform: rotate(180deg); }
-    .faq-a { display: none; padding: 0 20px 16px; color: var(--muted); font-size: 14px; line-height: 1.7; }
-    .faq-item.open .faq-a { display: block; }
+    .faq-section { background: #f1f6fa; }
+    .faq-list { margin: 0 auto; max-width: 820px; }
+    .faq-item { background: white; border: 1px solid var(--line); border-radius: 12px; margin-bottom: 11px; overflow: hidden; }
+    .faq-question { align-items: center; background: white; border: 0; color: var(--navy); display: flex; font-size: 15px; font-weight: 800; justify-content: space-between; padding: 18px 20px; text-align: left; width: 100%; }
+    .faq-question:hover { background: #fbfdff; }
+    .faq-symbol { color: var(--teal); font-size: 20px; font-weight: 400; margin-left: 16px; transition: transform .18s ease; }
+    .faq-item.open .faq-symbol { transform: rotate(45deg); }
+    .faq-answer { color: var(--muted); display: none; font-size: 14px; line-height: 1.7; padding: 0 20px 19px; }
+    .faq-item.open .faq-answer { display: block; }
+    .inline-link { color: var(--teal-dark); font-weight: 800; text-decoration: underline; text-underline-offset: 2px; }
 
-    /* FOOTER */
-    footer { background: #1a237e; color: rgba(255,255,255,0.8); padding: 40px 24px 20px; }
-    .footer-inner { max-width: 1200px; margin: 0 auto; }
-    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 32px; margin-bottom: 32px; }
-    .footer-title { color: white; font-weight: 700; margin-bottom: 12px; font-size: 14px; }
-    .footer-link { display: block; color: rgba(255,255,255,0.7); font-size: 13px; margin-bottom: 8px; }
-    .footer-link:hover { color: white; }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.15); padding-top: 20px; text-align: center; font-size: 13px; }
+    /* Footer */
+    .site-footer { background: #0d243b; color: rgba(255,255,255,.72); padding: 54px 0 22px; }
+    .footer-grid { display: grid; gap: 38px; grid-template-columns: 1.4fr .8fr .9fr; }
+    .site-footer .brand { color: white; display: inline-block; margin-bottom: 12px; }
+    .site-footer .brand span { color: #6ee7b7; }
+    .footer-copy { font-size: 14px; max-width: 340px; }
+    .footer-title { color: white; font-size: 14px; font-weight: 800; margin-bottom: 13px; }
+    .footer-link { display: block; font-size: 13px; margin: 9px 0; }
+    .footer-link:hover { color: #a7f3d0; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.13); font-size: 12px; margin-top: 36px; padding-top: 20px; }
 
-    /* MODALS */
-    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+    /* Modals */
+    .modal-overlay { align-items: center; background: rgba(7, 21, 35, .62); display: none; inset: 0; justify-content: center; padding: 20px; position: fixed; z-index: 1000; }
     .modal-overlay.active { display: flex; }
-    .modal-box { background: white; border-radius: 16px; padding: 32px; width: 100%; max-width: 420px; position: relative; animation: fadeIn 0.3s ease; max-height: 90vh; overflow-y: auto; }
-    .modal-close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 20px; color: var(--muted); cursor: pointer; line-height: 1; }
-    .modal-close:hover { color: var(--text); }
-    .modal-title { font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
-    .modal-sub { color: var(--muted); font-size: 14px; margin-bottom: 24px; }
+    .modal-box { animation: lift .2s ease; background: white; border-radius: 18px; box-shadow: 0 26px 65px rgba(0,0,0,.28); max-height: 90vh; max-width: 440px; overflow-y: auto; padding: 30px; position: relative; width: 100%; }
+    .modal-close { background: transparent; border: 0; color: #708196; font-size: 25px; height: 36px; line-height: 1; position: absolute; right: 14px; top: 12px; width: 36px; }
+    .modal-title { color: var(--navy); font-family: 'Manrope', sans-serif; font-size: 24px; font-weight: 800; letter-spacing: -.6px; margin-bottom: 6px; }
+    .modal-sub { color: var(--muted); font-size: 14px; margin-bottom: 22px; }
     .form-group { margin-bottom: 16px; }
-    .form-label { display: block; font-weight: 600; font-size: 13px; color: var(--text); margin-bottom: 6px; }
-    .form-input { width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'Inter', sans-serif; transition: border-color 0.2s; }
-    .form-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(26,35,126,0.08); }
-    .form-submit { width: 100%; padding: 13px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 15px; display: flex; align-items: center; justify-content: center; gap: 8px; }
-    .form-submit:hover { background: var(--secondary); }
-    .form-submit:disabled { opacity: 0.6; cursor: not-allowed; }
-    .btn-spinner { display: none; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3); border-top-color: white; border-radius: 50%; animation: spin 0.8s linear infinite; }
-    .alert { padding: 12px 14px; border-radius: 8px; font-size: 13px; margin-bottom: 16px; display: none; }
-    .alert-error { background: #fdecea; color: #c62828; border: 1px solid #ffcdd2; }
-    .alert-success { background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
-    .modal-link { color: var(--primary); font-weight: 600; cursor: pointer; background: none; border: none; font-size: 14px; font-family: 'Inter', sans-serif; }
+    .form-label { color: #334155; display: block; font-size: 13px; font-weight: 800; margin-bottom: 7px; }
+    .form-input { border: 1px solid #cbd5e1; border-radius: 9px; color: var(--ink); font-size: 14px; min-height: 45px; padding: 0 12px; width: 100%; }
+    .form-input:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(15,118,110,.11); outline: 0; }
+    .form-submit { background: var(--teal); border: 0; border-radius: 9px; color: white; font-size: 14px; font-weight: 800; min-height: 46px; width: 100%; }
+    .form-submit:hover { background: var(--teal-dark); }
+    .form-submit:disabled { cursor: not-allowed; opacity: .65; }
+    .btn-spinner { animation: spin .8s linear infinite; border: 2px solid rgba(255,255,255,.35); border-radius: 50%; border-top-color: white; display: none; height: 15px; margin-right: 8px; vertical-align: -2px; width: 15px; }
+    .alert { border-radius: 9px; display: none; font-size: 13px; margin-bottom: 16px; padding: 11px 12px; }
+    .alert-error { background: var(--danger-bg); border: 1px solid #fecdca; color: var(--danger); }
+    .alert-success { background: var(--success-bg); border: 1px solid #abefc6; color: var(--success); }
+    .modal-footer { color: var(--muted); font-size: 13px; margin-top: 18px; text-align: center; }
+    .modal-link { background: transparent; border: 0; color: var(--teal-dark); font-size: 13px; font-weight: 800; }
     .modal-link:hover { text-decoration: underline; }
-    .modal-footer { text-align: center; margin-top: 16px; color: var(--muted); font-size: 13px; }
 
-    /* WHATSAPP */
-    .wa-float { position: fixed; bottom: 24px; right: 24px; z-index: 999; background: #25D366; color: white; width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 4px 12px rgba(37,211,102,0.4); text-decoration: none; }
-    .wa-float:hover { background: #128C7E; transform: scale(1.05); }
+    /* Support */
+    .wa-float { align-items: center; background: #25d366; border-radius: 999px; bottom: 22px; box-shadow: 0 10px 28px rgba(17, 94, 89, .30); color: white; display: inline-flex; font-size: 13px; font-weight: 800; gap: 8px; min-height: 48px; padding: 0 17px; position: fixed; right: 22px; z-index: 999; }
+    .wa-float:hover { background: #1fae56; transform: translateY(-2px); }
+    .wa-float svg { height: 19px; width: 19px; }
 
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      nav { display: none; }
-      nav.open { display: flex; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: #1a237e; padding: 16px; gap: 12px; z-index: 99; }
-      .hamburger { display: block; }
-      .header-inner { position: relative; }
+    @media (max-width: 900px) {
+      .hero-grid, .membership-grid { grid-template-columns: 1fr; }
+      .hero { padding: 70px 0; }
+      .hero-card { max-width: 620px; }
+      .clarity-grid, .steps-grid { grid-template-columns: 1fr; }
+      .categories-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 720px) {
+      .container { padding: 0 18px; }
+      .header-inner { min-height: 64px; }
+      .menu-toggle { display: block; }
+      .main-nav { background: white; border-bottom: 1px solid var(--line); box-shadow: 0 16px 30px rgba(16,42,67,.12); display: none; flex-direction: column; gap: 17px; left: 0; padding: 20px; position: absolute; right: 0; top: 64px; }
+      .main-nav.open { display: flex; }
+      .main-nav .btn { width: 100%; }
+      .hero h1 { font-size: 39px; letter-spacing: -1.3px; }
+      .hero-copy { font-size: 16px; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; }
+      section { padding: 62px 0; }
+      .categories-grid { grid-template-columns: 1fr; }
+      .task-toolbar { justify-content: flex-start; overflow-x: auto; padding: 0 0 4px; flex-wrap: nowrap; }
+      .filter-chip { flex: 0 0 auto; }
+      .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+      .wa-float { border-radius: 50%; height: 52px; justify-content: center; padding: 0; width: 52px; }
+      .wa-float span { display: none; }
     }
   </style>
 </head>
 <body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="RewardFlow home">Reward<span>Flow</span></a>
+      <nav id="mainNav" class="main-nav" aria-label="Main navigation">
+        <a href="#how-it-works">How it works</a>
+        <a href="#task-preview">Task preview</a>
+        <a href="#membership">Membership</a>
+        <a href="#faq">FAQ</a>
+        <button type="button" class="btn btn-primary btn-small" onclick="openModal('login')">Sign in</button>
+      </nav>
+      <button class="menu-toggle" type="button" onclick="toggleNav()" aria-label="Toggle navigation">☰</button>
+    </div>
+  </header>
 
-<!-- HEADER -->
-<header>
-  <div class="header-inner">
-    <div class="logo">Reward<span>Flow</span></div>
-    <nav id="mainNav">
-      <a href="#tasks">Tasks</a>
-      <a href="#testimonials">Testimonials</a>
-      <a href="#faq">FAQ</a>
-      <button class="btn-signin" onclick="openModal('login')">Sign In</button>
-    </nav>
-    <button class="hamburger" id="hamburger" onclick="toggleNav()">☰</button>
-  </div>
-</header>
-
-<!-- HERO -->
-<section class="hero">
-  <h1>Turn Spare Minutes Into<br>Real Earnings</h1>
-  <p>Complete simple tasks, watch ads, download apps, and get paid instantly. No experience needed. Join thousands of users earning daily.</p>
-  <div class="hero-btns">
-    <button class="btn-primary" onclick="openModal('signup')">Start Earning Now</button>
-    <button class="btn-outline" onclick="document.getElementById('tasks').scrollIntoView({behavior:'smooth'})">View Tasks</button>
-  </div>
-</section>
-
-<!-- STATS -->
-<div class="stats">
-  <div class="stats-inner">
-    <div><div class="stat-num">50,000+</div><div class="stat-label">Active Users</div></div>
-    <div><div class="stat-num">$2M+</div><div class="stat-label">Total Paid Out</div></div>
-    <div><div class="stat-num">15+</div><div class="stat-label">Task Categories</div></div>
-    <div><div class="stat-num">24/7</div><div class="stat-label">Support Available</div></div>
-  </div>
-</div>
-
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div class="section-inner">
-    <h2 class="section-title">What Our Users Say</h2>
-    <p class="section-sub">Join thousands of satisfied earners worldwide</p>
-    <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <div class="testimonial-header">
-          <img src="https://i.pravatar.cc/150?img=1" alt="Maria Santos">
-          <div><div class="testimonial-name">Maria Santos</div><div class="testimonial-country">🇵🇭 Philippines</div></div>
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">A straightforward task-reward platform</span>
+          <h1 id="hero-title">Explore approved tasks. Complete work. Earn reviewed rewards.</h1>
+          <p class="hero-copy">RewardFlow helps members discover approved digital tasks, submit proof of completion, and receive rewards when their work is reviewed. Begin with a free account and decide later whether lifetime Premium access is right for you.</p>
+          <div class="hero-actions">
+            <button type="button" class="btn btn-primary" onclick="openModal('signup')">Create a free account</button>
+            <a class="btn btn-secondary" href="#how-it-works">See how it works</a>
+          </div>
+          <div class="hero-trust" aria-label="Key membership details">
+            <span>Free account to explore</span>
+            <span>Tasks reviewed before rewards</span>
+            <span>One-time Premium option</span>
+          </div>
         </div>
-        <p class="testimonial-text">"I earned $450 in my first week! The tasks are so easy and the payments are instant."</p>
+        <aside class="hero-card" aria-label="RewardFlow process overview">
+          <div class="hero-card-header">
+            <div class="hero-card-icon">RF</div>
+            <div>
+              <div class="hero-card-title">Your clear path to rewards</div>
+              <div class="hero-card-sub">No subscription is required to explore</div>
+            </div>
+          </div>
+          <ol class="process-list">
+            <li><span class="process-number">1</span><div><strong>Join for free</strong><p>View your dashboard and available task opportunities.</p></div></li>
+            <li><span class="process-number">2</span><div><strong>Complete an approved task</strong><p>Follow the instructions and provide any required evidence.</p></div></li>
+            <li><span class="process-number">3</span><div><strong>Receive review and rewards</strong><p>Approved work is credited to your available balance.</p></div></li>
+          </ol>
+        </aside>
       </div>
-      <div class="testimonial-card">
-        <div class="testimonial-header">
-          <img src="https://i.pravatar.cc/150?img=2" alt="Ahmed Khan">
-          <div><div class="testimonial-name">Ahmed Khan</div><div class="testimonial-country">🇵🇰 Pakistan</div></div>
+    </section>
+
+    <section class="clarity-section" aria-label="RewardFlow commitments">
+      <div class="container clarity-grid">
+        <article class="clarity-card"><div class="clarity-mark">1</div><h3>Start before you upgrade</h3><p>Every new member can open the dashboard, browse the task layout, and understand the process before choosing Premium.</p></article>
+        <article class="clarity-card"><div class="clarity-mark">2</div><h3>Clear review process</h3><p>Task rewards are not automatic. Each submission is checked against its stated requirements before it can be credited.</p></article>
+        <article class="clarity-card"><div class="clarity-mark">3</div><h3>Simple membership terms</h3><p>Premium is an optional one-time $15 payment for lifetime access to premium features. There are no monthly subscription fees.</p></article>
+      </div>
+    </section>
+
+    <section id="how-it-works">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">How it works</span>
+          <h2>A simple process from sign-up to withdrawal</h2>
+          <p>We make the task journey easy to understand, so you can focus on completing work that meets each task's requirements.</p>
         </div>
-        <p class="testimonial-text">"$320 in 10 days! Highly recommend RewardFlow to anyone looking for extra income."</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-header">
-          <img src="https://i.pravatar.cc/150?img=3" alt="Chinwe Okafor">
-          <div><div class="testimonial-name">Chinwe Okafor</div><div class="testimonial-country">🇳🇬 Nigeria</div></div>
+        <div class="steps-grid">
+          <article class="step-card"><div class="step-no">01</div><h3>Create your free account</h3><p>Set up your profile and enter the dashboard. You can immediately explore the available task categories and membership details.</p></article>
+          <article class="step-card"><div class="step-no">02</div><h3>Choose and submit tasks</h3><p>Select an available task, follow its instructions carefully, and upload proof or notes where requested.</p></article>
+          <article class="step-card"><div class="step-no">03</div><h3>Track approved rewards</h3><p>Your dashboard keeps your available balance, total earned amount, completed tasks, pending reviews, and recent activity in one place.</p></article>
         </div>
-        <p class="testimonial-text">"The app testing tasks are so simple. I've made $280 already this month!"</p>
       </div>
-      <div class="testimonial-card">
-        <div class="testimonial-header">
-          <img src="https://i.pravatar.cc/150?img=4" alt="Siti Rahayu">
-          <div><div class="testimonial-name">Siti Rahayu</div><div class="testimonial-country">🇮🇩 Indonesia</div></div>
+    </section>
+
+    <section class="categories-section" aria-labelledby="categories-title">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Task categories</span>
+          <h2 id="categories-title">A clearer way to find opportunities</h2>
+          <p>Availability changes over time. These examples show the types of task categories members may see inside RewardFlow.</p>
         </div>
-        <p class="testimonial-text">"$500 in two weeks. This has been life-changing for my family."</p>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-header">
-          <img src="https://i.pravatar.cc/150?img=5" alt="David Ochieng">
-          <div><div class="testimonial-name">David Ochieng</div><div class="testimonial-country">🇰🇪 Kenya</div></div>
+        <div class="categories-grid">
+          <article class="category-card"><span class="category-kicker">Category 01</span><h3>Daily Tasks</h3><p>Short, straightforward activities that may be available on a recurring basis.</p></article>
+          <article class="category-card"><span class="category-kicker">Category 02</span><h3>Social Media Tasks</h3><p>Approved engagement, content feedback, or creator-focused activities with clear instructions.</p></article>
+          <article class="category-card"><span class="category-kicker">Category 03</span><h3>Website Visits</h3><p>Explore a service, product, or web experience and provide the requested completion details.</p></article>
+          <article class="category-card"><span class="category-kicker">Category 04</span><h3>Surveys</h3><p>Share feedback through approved questionnaires and market-research activities.</p></article>
+          <article class="category-card"><span class="category-kicker">Category 05</span><h3>Referrals</h3><p>Referral opportunities may be offered when an approved referral campaign is active.</p></article>
         </div>
-        <p class="testimonial-text">"Premium upgrade was worth every penny. Now earning $50/day consistently!"</p>
       </div>
+    </section>
+
+    <section id="task-preview" class="tasks-section" aria-labelledby="tasks-title">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Live task preview</span>
+          <h2 id="tasks-title">Browse available tasks before deciding on Premium</h2>
+          <p>Create a free account to continue to the dashboard and submit tasks. Premium-only opportunities are clearly marked before you upgrade.</p>
+        </div>
+        <div class="task-toolbar" aria-label="Filter visible task categories">
+          <button type="button" class="filter-chip active" onclick="filterTasks('All', this)">All tasks</button>
+          <button type="button" class="filter-chip" onclick="filterTasks('Daily Tasks', this)">Daily Tasks</button>
+          <button type="button" class="filter-chip" onclick="filterTasks('Social Media Tasks', this)">Social Media</button>
+          <button type="button" class="filter-chip" onclick="filterTasks('Website Visits', this)">Website Visits</button>
+          <button type="button" class="filter-chip" onclick="filterTasks('Surveys', this)">Surveys</button>
+          <button type="button" class="filter-chip" onclick="filterTasks('Referrals', this)">Referrals</button>
+        </div>
+        <div id="tasksGrid" class="tasks-grid" aria-live="polite">
+          <div class="task-empty"><span class="spinner"></span><div>Loading available tasks…</div></div>
+        </div>
+        <p class="task-note">Task rewards, availability, and eligibility can vary. Please review each task's instructions before submitting work.</p>
+      </div>
+    </section>
+
+    <section id="membership" class="membership-section" aria-labelledby="membership-title">
+      <div class="container membership-grid">
+        <div class="membership-summary">
+          <span class="eyebrow">Optional Premium membership</span>
+          <h2 id="membership-title">One payment. Lifetime access.</h2>
+          <p>Premium is designed for members who want access to the full range of premium task opportunities and a lower withdrawal threshold.</p>
+          <div class="price-row"><strong>$15</strong><span>one-time payment<br>no monthly subscription</span></div>
+          <a class="btn btn-primary" href="app.html">View membership details</a>
+        </div>
+        <div class="membership-details">
+          <h3>What Premium includes</h3>
+          <ul class="benefit-list">
+            <li>Lifetime access to approved Premium-only task opportunities.</li>
+            <li>Clear Premium labels on tasks so access requirements are visible.</li>
+            <li>A lower withdrawal threshold where available in the platform.</li>
+            <li>Dedicated WhatsApp support for membership questions.</li>
+            <li>No monthly or recurring subscription charge.</li>
+          </ul>
+          <div class="membership-disclaimer"><strong>Please note:</strong> Premium unlocks platform features and Premium task access; it does not guarantee a particular volume of work or earnings. Each task must still be completed and approved.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq-section" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Frequently asked questions</span>
+          <h2 id="faq-title">The information members ask for most</h2>
+          <p>If you need help with an account or membership question, our support team is available on WhatsApp.</p>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item"><button class="faq-question" type="button" onclick="toggleFaq(this)">What is RewardFlow?<span class="faq-symbol">+</span></button><div class="faq-answer">RewardFlow is a task-reward platform. Members can view approved digital tasks, submit proof of completion when required, and track task review outcomes in their dashboard.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button" onclick="toggleFaq(this)">Can I explore the platform before upgrading?<span class="faq-symbol">+</span></button><div class="faq-answer">Yes. You can create a free account, view the dashboard, and browse task opportunities before choosing the optional Premium membership. Premium-only tasks are clearly marked.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button" onclick="toggleFaq(this)">How are task rewards handled?<span class="faq-symbol">+</span></button><div class="faq-answer">Each task has its own instructions and reward amount. When you submit a task, it enters review. Approved submissions are reflected in your account balance; incomplete or ineligible submissions may not be approved.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button" onclick="toggleFaq(this)">What does the $15 Premium payment cover?<span class="faq-symbol">+</span></button><div class="faq-answer">It is a one-time payment for lifetime Premium membership. It unlocks Premium task access, supports a lower withdrawal threshold where shown in the app, and does not create a monthly subscription.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button" onclick="toggleFaq(this)">Which wallet is used for Premium membership?<span class="faq-symbol">+</span></button><div class="faq-answer">Premium membership payments are accepted via USDT on the TRON TRC20 network. The exact wallet address and proof-submission steps are shown securely inside the Premium Membership page after you sign in.</div></div>
+          <div class="faq-item"><button class="faq-question" type="button" onclick="toggleFaq(this)">How can I contact support?<span class="faq-symbol">+</span></button><div class="faq-answer">You can message RewardFlow support on <a class="inline-link" href="https://wa.me/447379343980" target="_blank" rel="noopener">WhatsApp at +447379343980</a>. Please avoid sharing passwords or private account details in chat.</div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div><a class="brand" href="#top">Reward<span>Flow</span></a><p class="footer-copy">A clear, member-first place to explore approved tasks, track progress, and understand optional Premium access before making a decision.</p></div>
+        <div><div class="footer-title">Explore</div><a class="footer-link" href="#how-it-works">How it works</a><a class="footer-link" href="#task-preview">Task preview</a><a class="footer-link" href="#membership">Premium Membership</a></div>
+        <div><div class="footer-title">Support</div><a class="footer-link" href="https://wa.me/447379343980" target="_blank" rel="noopener">WhatsApp: +447379343980</a><a class="footer-link" href="#faq">Frequently asked questions</a></div>
+      </div>
+      <div class="footer-bottom">© 2026 RewardFlow. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/447379343980" target="_blank" rel="noopener" aria-label="Chat with RewardFlow support on WhatsApp" title="Chat with us on WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true" fill="currentColor"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3Zm0 23.6a10.5 10.5 0 0 1-5.3-1.4l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6Zm5.8-7.9c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2s-.8 1-.9 1.2c-.2.2-.3.2-.6.1a8.6 8.6 0 0 1-2.5-1.5 9.5 9.5 0 0 1-1.8-2.2c-.2-.3 0-.4.1-.6l.5-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-1-2.4c-.2-.5-.5-.4-.7-.4h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 3 1.2 3.2a12 12 0 0 0 4.6 4.1c.6.2 1 .4 1.4.5.6.2 1.1.2 1.6.1.5-.1 1.8-.7 2-1.4.3-.6.3-1.2.2-1.4-.1-.1-.2-.2-.5-.4Z"/></svg><span>WhatsApp support</span></a>
+
+  <div class="modal-overlay" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+    <div class="modal-box">
+      <button type="button" class="modal-close" onclick="closeModal('login')" aria-label="Close sign in">×</button>
+      <div class="modal-title" id="loginTitle">Welcome back</div>
+      <div class="modal-sub">Sign in to view your dashboard, tasks, activity, and membership status.</div>
+      <div class="alert alert-error" id="loginAlert"></div><div class="alert alert-success" id="loginSuccess"></div>
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="form-group"><label class="form-label" for="loginEmail">Email address</label><input class="form-input" type="email" id="loginEmail" autocomplete="email" placeholder="you@example.com" required></div>
+        <div class="form-group"><label class="form-label" for="loginPassword">Password</label><input class="form-input" type="password" id="loginPassword" autocomplete="current-password" placeholder="Your password" required></div>
+        <button type="submit" class="form-submit" id="loginBtn"><span class="btn-spinner" id="loginSpinner"></span>Sign in</button>
+      </form>
+      <div class="modal-footer"><button type="button" class="modal-link" onclick="openModal('forgot')">Forgot password?</button><br>New to RewardFlow? <button type="button" class="modal-link" onclick="openModal('signup')">Create a free account</button></div>
     </div>
   </div>
-</section>
 
-<!-- TASKS -->
-<section id="tasks" class="tasks-section">
-  <div class="section-inner">
-    <h2 class="section-title">Available Tasks</h2>
-    <p class="section-sub">Sign up to start completing tasks and earning money</p>
-    <div class="tasks-grid" id="tasksGrid">
-      <div class="tasks-loading">
-        <div class="spinner-icon"></div>
-        <div>Loading tasks...</div>
-      </div>
+  <div class="modal-overlay" id="signupModal" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
+    <div class="modal-box">
+      <button type="button" class="modal-close" onclick="closeModal('signup')" aria-label="Close sign up">×</button>
+      <div class="modal-title" id="signupTitle">Create your free account</div>
+      <div class="modal-sub">Explore the dashboard and available task categories before deciding whether Premium access is right for you.</div>
+      <div class="alert alert-error" id="signupAlert"></div><div class="alert alert-success" id="signupSuccess"></div>
+      <form id="signupForm" onsubmit="handleSignup(event)">
+        <div class="form-group"><label class="form-label" for="signupName">Full name</label><input class="form-input" type="text" id="signupName" autocomplete="name" placeholder="Your full name" required></div>
+        <div class="form-group"><label class="form-label" for="signupEmail">Email address</label><input class="form-input" type="email" id="signupEmail" autocomplete="email" placeholder="you@example.com" required></div>
+        <div class="form-group"><label class="form-label" for="signupPassword">Password</label><input class="form-input" type="password" id="signupPassword" autocomplete="new-password" placeholder="At least 6 characters" required minlength="6"></div>
+        <button type="submit" class="form-submit" id="signupBtn"><span class="btn-spinner" id="signupSpinner"></span>Create free account</button>
+      </form>
+      <div class="modal-footer">Already have an account? <button type="button" class="modal-link" onclick="openModal('login')">Sign in</button></div>
     </div>
   </div>
-</section>
 
-<!-- FAQ -->
-<section id="faq" class="faq-section">
-  <div class="section-inner">
-    <h2 class="section-title">Frequently Asked Questions</h2>
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">How do I earn? <span class="faq-arrow">▼</span></div>
-        <div class="faq-a">Sign up for free, complete tasks from your dashboard, submit proof, and get paid directly to your account.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">When do I get paid? <span class="faq-arrow">▼</span></div>
-        <div class="faq-a">Withdrawals are processed within 24-48 hours after reaching the minimum $50 threshold.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">What is the activation fee? <span class="faq-arrow">▼</span></div>
-        <div class="faq-a">There is a $15 one-time activation fee to unlock premium tasks that pay up to $15 each. Free tasks are available without any fee.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Is this legitimate? <span class="faq-arrow">▼</span></div>
-        <div class="faq-a">Yes! We have thousands of satisfied users worldwide. Check our testimonials above. <a href="https://wa.me/447379343980" style="color:var(--primary);font-weight:600;">Contact us on WhatsApp</a> if you have questions.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">How do I contact support? <span class="faq-arrow">▼</span></div>
-        <div class="faq-a">WhatsApp: <a href="https://wa.me/447379343980" style="color:var(--primary);font-weight:600;">+447379343980</a> — We're available 24/7.</div>
-      </div>
+  <div class="modal-overlay" id="forgotModal" role="dialog" aria-modal="true" aria-labelledby="forgotTitle">
+    <div class="modal-box">
+      <button type="button" class="modal-close" onclick="closeModal('forgot')" aria-label="Close password reset">×</button>
+      <div class="modal-title" id="forgotTitle">Reset your password</div>
+      <div class="modal-sub">Enter the email address associated with your RewardFlow account to receive a reset link.</div>
+      <div class="alert alert-error" id="forgotAlert"></div><div class="alert alert-success" id="forgotSuccess"></div>
+      <form id="forgotForm" onsubmit="handleForgotPassword(event)">
+        <div class="form-group"><label class="form-label" for="forgotEmail">Email address</label><input class="form-input" type="email" id="forgotEmail" autocomplete="email" placeholder="you@example.com" required></div>
+        <button type="submit" class="form-submit" id="forgotBtn"><span class="btn-spinner" id="forgotSpinner"></span>Send reset link</button>
+      </form>
+      <div class="modal-footer"><button type="button" class="modal-link" onclick="openModal('login')">Back to sign in</button></div>
     </div>
   </div>
-</section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div>
-        <div class="logo" style="margin-bottom:12px;">Reward<span>Flow</span></div>
-        <p style="font-size:13px;opacity:0.7;">Earn real money completing simple tasks from home.</p>
-      </div>
-      <div>
-        <div class="footer-title">Quick Links</div>
-        <a href="#tasks" class="footer-link">Available Tasks</a>
-        <a href="#faq" class="footer-link">FAQ</a>
-        <a href="https://wa.me/447379343980" class="footer-link">Contact Support</a>
-      </div>
-      <div>
-        <div class="footer-title">Legal</div>
-        <a href="#" class="footer-link">Terms of Service</a>
-        <a href="#" class="footer-link">Privacy Policy</a>
-      </div>
-    </div>
-    <div class="footer-bottom">© 2026 RewardFlow. All rights reserved.</div>
-  </div>
-</footer>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script>
+  (function () {
+    'use strict';
+    var SUPABASE_URL = 'https://dhebtkbhpueitcapmwcp.supabase.co';
+    var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRoZWJ0a2JocHVlaXRjYXBtd2NwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ3OTQ4ODYsImV4cCI6MjEwMDM3MDg4Nn0.KBBfbl7cfW9tWfuFJv5aiZjUztRpKeHAyVLI8MqYgcA';
+    var sb = null;
+    var taskList = [];
+    var activeCategory = 'All';
 
-<!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/447379343980" class="wa-float" target="_blank" title="Chat with us on WhatsApp">💬</a>
-
-<!-- LOGIN MODAL -->
-<div class="modal-overlay" id="loginModal">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal('login')">✕</button>
-    <div class="modal-title">Welcome Back</div>
-    <div class="modal-sub">Sign in to your RewardFlow account</div>
-    <div class="alert alert-error" id="loginAlert"></div>
-    <div class="alert alert-success" id="loginSuccess"></div>
-    <form id="loginForm" onsubmit="handleLogin(event)">
-      <div class="form-group">
-        <label class="form-label" for="loginEmail">Email Address</label>
-        <input class="form-input" type="email" id="loginEmail" placeholder="you@example.com" required>
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="loginPassword">Password</label>
-        <input class="form-input" type="password" id="loginPassword" placeholder="Your password" required>
-      </div>
-      <button type="submit" class="form-submit" id="loginBtn">
-        <span class="btn-spinner" id="loginSpinner"></span>
-        Sign In
-      </button>
-    </form>
-    <div class="modal-footer">
-      <button class="modal-link" onclick="openModal('forgot')">Forgot password?</button>
-      &nbsp;·&nbsp;
-      Don't have an account? <button class="modal-link" onclick="openModal('signup')">Sign Up</button>
-    </div>
-  </div>
-</div>
-
-<!-- SIGNUP MODAL -->
-<div class="modal-overlay" id="signupModal">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal('signup')">✕</button>
-    <div class="modal-title">Create Account</div>
-    <div class="modal-sub">Join RewardFlow and start earning today</div>
-    <div class="alert alert-error" id="signupAlert"></div>
-    <div class="alert alert-success" id="signupSuccess"></div>
-    <form id="signupForm" onsubmit="handleSignup(event)">
-      <div class="form-group">
-        <label class="form-label" for="signupName">Full Name</label>
-        <input class="form-input" type="text" id="signupName" placeholder="Your full name" required>
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="signupEmail">Email Address</label>
-        <input class="form-input" type="email" id="signupEmail" placeholder="you@example.com" required>
-      </div>
-      <div class="form-group">
-        <label class="form-label" for="signupPassword">Password</label>
-        <input class="form-input" type="password" id="signupPassword" placeholder="Min. 6 characters" required minlength="6">
-      </div>
-      <button type="submit" class="form-submit" id="signupBtn">
-        <span class="btn-spinner" id="signupSpinner"></span>
-        Create Free Account
-      </button>
-    </form>
-    <div class="modal-footer">
-      Already have an account? <button class="modal-link" onclick="openModal('login')">Sign In</button>
-    </div>
-  </div>
-</div>
-
-<!-- FORGOT PASSWORD MODAL -->
-<div class="modal-overlay" id="forgotModal">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal('forgot')">✕</button>
-    <div class="modal-title">Reset Password</div>
-    <div class="modal-sub">Enter your email to receive a reset link</div>
-    <div class="alert alert-error" id="forgotAlert"></div>
-    <div class="alert alert-success" id="forgotSuccess"></div>
-    <form id="forgotForm" onsubmit="handleForgotPassword(event)">
-      <div class="form-group">
-        <label class="form-label" for="forgotEmail">Email Address</label>
-        <input class="form-input" type="email" id="forgotEmail" placeholder="you@example.com" required>
-      </div>
-      <button type="submit" class="form-submit" id="forgotBtn">
-        <span class="btn-spinner" id="forgotSpinner"></span>
-        Send Reset Link
-      </button>
-    </form>
-    <div class="modal-footer">
-      <button class="modal-link" onclick="openModal('login')">Back to Sign In</button>
-    </div>
-  </div>
-</div>
-
-<!-- Supabase JS CDN -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
-<script>
-(function() {
-  'use strict';
-
-  // =============================================
-  // CONFIG
-  // =============================================
-  var SUPABASE_URL = 'https://dhebtkbhpueitcapmwcp.supabase.co';
-  var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRoZWJ0a2JocHVlaXRjYXBtd2NwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ3OTQ4ODYsImV4cCI6MjEwMDM3MDg4Nn0.KBBfbl7cfW9tWfuFJv5aiZjUztRpKeHAyVLI8MqYgcA';
-  var sb = null;
-
-  // =============================================
-  // INIT
-  // =============================================
-  function init() {
-    try {
-      sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    } catch(e) {
-      console.error('Supabase init error:', e);
-      return;
+    function init() {
+      try { sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); }
+      catch (e) { console.error('Supabase init error:', e); return; }
+      loadTasks();
+      sb.auth.getSession().then(function (result) {
+        if (result.data && result.data.session) window.location.href = 'app.html';
+      }).catch(function (e) { console.log('Session check error (non-critical):', e.message); });
     }
 
-    // Load tasks immediately
-    loadTasks();
-
-    // Check session in background (non-blocking)
-    sb.auth.getSession().then(function(result) {
-      if (result.data && result.data.session) {
-        window.location.href = 'app.html';
-      }
-    }).catch(function(e) {
-      console.log('Session check error (non-critical):', e.message);
-    });
-  }
-
-  // =============================================
-  // LOAD TASKS
-  // =============================================
-  function loadTasks() {
-    var grid = document.getElementById('tasksGrid');
-    if (!grid) return;
-    if (!sb) {
-      grid.innerHTML = '<div class="tasks-loading">Database not connected. Please refresh.</div>';
-      return;
+    function taskCategory(task) {
+      var text = ((task.title || '') + ' ' + (task.description || '')).toLowerCase();
+      if (/(referr|invite)/.test(text)) return 'Referrals';
+      if (/(survey|feedback|questionnaire|market)/.test(text)) return 'Surveys';
+      if (/(website|web site|shopping|food delivery|e-book|ebook|browse)/.test(text)) return 'Website Visits';
+      if (/(social|youtube|music|google review|post|video)/.test(text)) return 'Social Media Tasks';
+      return 'Daily Tasks';
     }
 
-    sb.from('tasks')
-      .select('*')
-      .eq('is_active', true)
-      .order('id')
-      .then(function(result) {
-        if (result.error) {
-          console.error('Tasks error:', result.error);
-          grid.innerHTML = '<div class="tasks-loading">Could not load tasks. Please refresh the page.</div>';
-          return;
-        }
-        var tasks = result.data;
-        if (!tasks || tasks.length === 0) {
-          grid.innerHTML = '<div class="tasks-loading">No tasks available right now. Check back soon!</div>';
-          return;
-        }
-        grid.innerHTML = '';
-        tasks.forEach(function(task) {
-          var card = document.createElement('div');
-          card.className = 'task-card';
-          card.innerHTML =
-            (task.is_premium ? '<span class="task-badge">⭐ Premium</span>' : '') +
-            '<div class="task-title">' + esc(task.title) + '</div>' +
-            '<div class="task-desc">' + esc(task.description || 'Complete this task to earn rewards.') + '</div>' +
-            '<div class="task-reward">$' + parseFloat(task.reward).toFixed(2) + '</div>' +
-            '<button class="task-btn' + (task.is_premium ? ' premium' : '') + '" onclick="openModal(\'signup\')">' +
-              (task.is_premium ? '🔒 Unlock with Premium' : '▶ Start Task') +
-            '</button>';
-          grid.appendChild(card);
-        });
-      })
-      .catch(function(e) {
-        console.error('Tasks fetch error:', e);
-        grid.innerHTML = '<div class="tasks-loading">Could not load tasks. Please refresh the page.</div>';
-      });
-  }
-
-  // =============================================
-  // AUTH HANDLERS
-  // =============================================
-  window.handleLogin = function(event) {
-    event.preventDefault();
-    if (!sb) return;
-    var email = document.getElementById('loginEmail').value.trim();
-    var password = document.getElementById('loginPassword').value;
-    var btn = document.getElementById('loginBtn');
-    var spinner = document.getElementById('loginSpinner');
-
-    setLoading(btn, spinner, true);
-    hideAlerts('login');
-
-    sb.auth.signInWithPassword({ email: email, password: password })
-      .then(function(result) {
-        if (result.error) {
-          showAlert('loginAlert', result.error.message, 'error');
-          setLoading(btn, spinner, false);
-          return;
-        }
-        window.location.href = 'app.html';
-      })
-      .catch(function(e) {
-        showAlert('loginAlert', e.message, 'error');
-        setLoading(btn, spinner, false);
-      });
-  };
-
-  window.handleSignup = function(event) {
-    event.preventDefault();
-    if (!sb) return;
-    var name = document.getElementById('signupName').value.trim();
-    var email = document.getElementById('signupEmail').value.trim();
-    var password = document.getElementById('signupPassword').value;
-    var btn = document.getElementById('signupBtn');
-    var spinner = document.getElementById('signupSpinner');
-
-    if (!name) {
-      showAlert('signupAlert', 'Please enter your full name.', 'error');
-      return;
-    }
-
-    setLoading(btn, spinner, true);
-    hideAlerts('signup');
-
-    sb.auth.signUp({
-      email: email,
-      password: password,
-      options: {
-        data: { full_name: name },
-        emailRedirectTo: window.location.origin + '/app.html'
-      }
-    }).then(function(result) {
-      if (result.error) {
-        showAlert('signupAlert', result.error.message, 'error');
-        setLoading(btn, spinner, false);
+    function renderTasks() {
+      var grid = document.getElementById('tasksGrid');
+      if (!grid) return;
+      var visible = taskList.filter(function (task) { return activeCategory === 'All' || taskCategory(task) === activeCategory; });
+      if (!visible.length) {
+        grid.innerHTML = '<div class="task-empty">No matching tasks are currently available in this category. Browse another category or check back later.</div>';
         return;
       }
-      if (result.data && result.data.session) {
-        // Auto-confirmed
-        window.location.href = 'app.html';
-      } else {
-        showAlert('signupSuccess', '✅ Account created! Please check your email to verify your account, then sign in.', 'success');
-        setLoading(btn, spinner, false);
-        document.getElementById('signupForm').reset();
-      }
-    }).catch(function(e) {
-      showAlert('signupAlert', e.message, 'error');
-      setLoading(btn, spinner, false);
-    });
-  };
-
-  window.handleForgotPassword = function(event) {
-    event.preventDefault();
-    if (!sb) return;
-    var email = document.getElementById('forgotEmail').value.trim();
-    var btn = document.getElementById('forgotBtn');
-    var spinner = document.getElementById('forgotSpinner');
-
-    setLoading(btn, spinner, true);
-    hideAlerts('forgot');
-
-    sb.auth.resetPasswordForEmail(email, {
-      redirectTo: window.location.origin + '/app.html?reset=true'
-    }).then(function(result) {
-      if (result.error) {
-        showAlert('forgotAlert', result.error.message, 'error');
-      } else {
-        showAlert('forgotSuccess', '✅ Password reset link sent! Check your email inbox.', 'success');
-        document.getElementById('forgotForm').reset();
-      }
-      setLoading(btn, spinner, false);
-    }).catch(function(e) {
-      showAlert('forgotAlert', e.message, 'error');
-      setLoading(btn, spinner, false);
-    });
-  };
-
-  // =============================================
-  // MODAL HELPERS
-  // =============================================
-  window.openModal = function(name) {
-    document.querySelectorAll('.modal-overlay').forEach(function(m) { m.classList.remove('active'); });
-    var modal = document.getElementById(name + 'Modal');
-    if (modal) modal.classList.add('active');
-  };
-
-  window.closeModal = function(name) {
-    var modal = document.getElementById(name + 'Modal');
-    if (modal) modal.classList.remove('active');
-  };
-
-  // Close on overlay click
-  document.addEventListener('click', function(e) {
-    if (e.target.classList.contains('modal-overlay')) {
-      e.target.classList.remove('active');
+      grid.innerHTML = visible.map(function (task) {
+        var premium = !!task.is_premium;
+        var category = taskCategory(task);
+        return '<article class="task-card">' +
+          '<div class="task-card-top"><span class="task-category">' + esc(category) + '</span><span class="task-status ' + (premium ? 'premium' : 'free') + '">' + (premium ? 'Premium' : 'Free to explore') + '</span></div>' +
+          '<h3>' + esc(task.title) + '</h3>' +
+          '<p>' + esc(task.description || 'Review the task instructions inside your account before submitting work.') + '</p>' +
+          '<div class="task-footer"><div><div class="task-reward-label">Reward after approval</div><div class="task-reward">$' + formatReward(task.reward) + '</div></div>' +
+          '<button type="button" class="btn ' + (premium ? 'btn-secondary' : 'btn-primary') + '" onclick="openModal(\'signup\')">' + (premium ? 'View Premium' : 'Create account') + '</button></div>' +
+          '</article>';
+      }).join('');
     }
-  });
 
-  // =============================================
-  // FAQ
-  // =============================================
-  window.toggleFaq = function(el) {
-    var item = el.parentElement;
-    var isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
-    if (!isOpen) item.classList.add('open');
-  };
+    function loadTasks() {
+      var grid = document.getElementById('tasksGrid');
+      if (!grid || !sb) return;
+      sb.from('tasks').select('*').eq('is_active', true).order('id').then(function (result) {
+        if (result.error) {
+          console.error('Tasks error:', result.error);
+          grid.innerHTML = '<div class="task-empty">Available tasks could not be loaded at this time. Please refresh the page or try again shortly.</div>';
+          return;
+        }
+        taskList = result.data || [];
+        renderTasks();
+      }).catch(function (e) {
+        console.error('Tasks fetch error:', e);
+        grid.innerHTML = '<div class="task-empty">Available tasks could not be loaded at this time. Please refresh the page or try again shortly.</div>';
+      });
+    }
 
-  // =============================================
-  // MOBILE NAV
-  // =============================================
-  window.toggleNav = function() {
-    document.getElementById('mainNav').classList.toggle('open');
-  };
+    window.filterTasks = function (category, button) {
+      activeCategory = category;
+      document.querySelectorAll('.filter-chip').forEach(function (chip) { chip.classList.remove('active'); });
+      if (button) button.classList.add('active');
+      renderTasks();
+    };
 
-  // =============================================
-  // UI HELPERS
-  // =============================================
-  function setLoading(btn, spinner, loading) {
-    btn.disabled = loading;
-    spinner.style.display = loading ? 'inline-block' : 'none';
-  }
+    window.handleLogin = function (event) {
+      event.preventDefault(); if (!sb) return;
+      var email = document.getElementById('loginEmail').value.trim();
+      var password = document.getElementById('loginPassword').value;
+      var btn = document.getElementById('loginBtn'); var spinner = document.getElementById('loginSpinner');
+      setLoading(btn, spinner, true); hideAlerts('login');
+      sb.auth.signInWithPassword({ email: email, password: password }).then(function (result) {
+        if (result.error) { showAlert('loginAlert', result.error.message, 'error'); setLoading(btn, spinner, false); return; }
+        window.location.href = 'app.html';
+      }).catch(function (e) { showAlert('loginAlert', e.message, 'error'); setLoading(btn, spinner, false); });
+    };
 
-  function showAlert(id, msg, type) {
-    var el = document.getElementById(id);
-    if (!el) return;
-    el.textContent = msg;
-    el.className = 'alert alert-' + type;
-    el.style.display = 'block';
-  }
+    window.handleSignup = function (event) {
+      event.preventDefault(); if (!sb) return;
+      var name = document.getElementById('signupName').value.trim();
+      var email = document.getElementById('signupEmail').value.trim();
+      var password = document.getElementById('signupPassword').value;
+      var btn = document.getElementById('signupBtn'); var spinner = document.getElementById('signupSpinner');
+      if (!name) { showAlert('signupAlert', 'Please enter your full name.', 'error'); return; }
+      setLoading(btn, spinner, true); hideAlerts('signup');
+      sb.auth.signUp({ email: email, password: password, options: { data: { full_name: name }, emailRedirectTo: window.location.origin + '/app.html' } }).then(function (result) {
+        if (result.error) { showAlert('signupAlert', result.error.message, 'error'); setLoading(btn, spinner, false); return; }
+        if (result.data && result.data.session) { window.location.href = 'app.html'; }
+        else { showAlert('signupSuccess', 'Account created. Please check your email to verify your address, then sign in.', 'success'); setLoading(btn, spinner, false); document.getElementById('signupForm').reset(); }
+      }).catch(function (e) { showAlert('signupAlert', e.message, 'error'); setLoading(btn, spinner, false); });
+    };
 
-  function hideAlerts(prefix) {
-    ['Alert', 'Success'].forEach(function(suffix) {
-      var el = document.getElementById(prefix + suffix);
-      if (el) el.style.display = 'none';
-    });
-  }
+    window.handleForgotPassword = function (event) {
+      event.preventDefault(); if (!sb) return;
+      var email = document.getElementById('forgotEmail').value.trim();
+      var btn = document.getElementById('forgotBtn'); var spinner = document.getElementById('forgotSpinner');
+      setLoading(btn, spinner, true); hideAlerts('forgot');
+      sb.auth.resetPasswordForEmail(email, { redirectTo: window.location.origin + '/app.html?reset=true' }).then(function (result) {
+        if (result.error) showAlert('forgotAlert', result.error.message, 'error');
+        else { showAlert('forgotSuccess', 'Password reset link sent. Please check your email inbox.', 'success'); document.getElementById('forgotForm').reset(); }
+        setLoading(btn, spinner, false);
+      }).catch(function (e) { showAlert('forgotAlert', e.message, 'error'); setLoading(btn, spinner, false); });
+    };
 
-  function esc(str) {
-    if (!str) return '';
-    var d = document.createElement('div');
-    d.appendChild(document.createTextNode(String(str)));
-    return d.innerHTML;
-  }
-
-  // =============================================
-  // START
-  // =============================================
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-
-})();
-</script>
+    window.openModal = function (name) {
+      document.querySelectorAll('.modal-overlay').forEach(function (modal) { modal.classList.remove('active'); });
+      var modal = document.getElementById(name + 'Modal'); if (modal) modal.classList.add('active');
+    };
+    window.closeModal = function (name) { var modal = document.getElementById(name + 'Modal'); if (modal) modal.classList.remove('active'); };
+    document.addEventListener('click', function (event) { if (event.target.classList.contains('modal-overlay')) event.target.classList.remove('active'); });
+    document.addEventListener('keydown', function (event) { if (event.key === 'Escape') document.querySelectorAll('.modal-overlay').forEach(function (modal) { modal.classList.remove('active'); }); });
+    window.toggleFaq = function (button) { var item = button.parentElement; var wasOpen = item.classList.contains('open'); document.querySelectorAll('.faq-item').forEach(function (entry) { entry.classList.remove('open'); }); if (!wasOpen) item.classList.add('open'); };
+    window.toggleNav = function () { document.getElementById('mainNav').classList.toggle('open'); };
+    function setLoading(btn, spinner, loading) { btn.disabled = loading; spinner.style.display = loading ? 'inline-block' : 'none'; }
+    function showAlert(id, message, type) { var el = document.getElementById(id); if (!el) return; el.textContent = message; el.className = 'alert alert-' + type; el.style.display = 'block'; }
+    function hideAlerts(prefix) { ['Alert', 'Success'].forEach(function (suffix) { var el = document.getElementById(prefix + suffix); if (el) el.style.display = 'none'; }); }
+    function esc(value) { var div = document.createElement('div'); div.textContent = String(value || ''); return div.innerHTML; }
+    function formatReward(value) { var amount = parseFloat(value); return isFinite(amount) ? amount.toFixed(2) : '0.00'; }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+  })();
+  </script>
 </body>
 </html>

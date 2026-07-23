@@ -111,6 +111,152 @@
       .stats-row { grid-template-columns: 1fr 1fr; }
       .tasks-grid { grid-template-columns: 1fr; }
     }
+    /* Professional interface refinements — presentation only */
+    :root {
+      --primary: #102a43;
+      --secondary: #173f66;
+      --accent: #0f766e;
+      --bg: #f3f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #607089;
+      --border: #dbe4ee;
+      --danger: #b42318;
+      --warning: #b7791f;
+      --shadow: 0 12px 30px rgba(16,42,67,.08);
+      --radius: 14px;
+    }
+    body { background: var(--bg); line-height: 1.55; }
+    .logo { color: var(--primary); font-size: 24px; letter-spacing: -.6px; }
+    .app-header { background: rgba(255,255,255,.98); border-bottom: 1px solid var(--border); box-shadow: 0 1px 0 rgba(16,42,67,.02); color: var(--text); height: 72px; padding: 0 28px; }
+    .app-header .logo { color: var(--primary); }
+    .header-user { align-items: center; display: flex; gap: 14px; }
+    .user-avatar { align-items: center; background: #e6fffa; border-radius: 50%; color: var(--teal, #0f766e); display: flex; font-weight: 800; height: 38px; justify-content: center; width: 38px; }
+    .user-name { color: var(--primary); font-size: 14px; }
+    .user-email { color: var(--muted); }
+    .btn-logout { background: white; border-color: #b9c6d4; color: var(--primary); }
+    .btn-logout:hover { background: #f7fafc; }
+    .app-layout { min-height: calc(100vh - 72px); }
+    .sidebar { background: #fff; border-right: 1px solid var(--border); padding: 20px 12px; width: 238px; }
+    .sidebar-label { color: #8796aa; font-size: 11px; font-weight: 800; letter-spacing: .09em; margin: 0 12px 10px; text-transform: uppercase; }
+    .sidebar-item { background: transparent; border: 0; border-left: 3px solid transparent; border-radius: 8px; color: #5c6b80; margin: 3px 0; text-align: left; width: 100%; }
+    .sidebar-item:hover { background: #f2f7fa; color: var(--primary); }
+    .sidebar-item.active { background: #eaf6f4; border-left-color: var(--accent); color: var(--teal, #0f766e); }
+    .nav-symbol { color: inherit; display: inline-flex; font-family: 'Manrope', sans-serif; font-size: 12px; font-weight: 800; justify-content: center; min-width: 20px; }
+    .mobile-nav { display: none; }
+    .main { max-width: 1440px; padding: 32px; }
+    .page-title { color: var(--primary); font-size: 29px; letter-spacing: -.8px; margin-bottom: 5px; }
+    .page-kicker { color: var(--accent); font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .page-intro { color: var(--muted); font-size: 14px; margin-top: 5px; }
+    .dashboard-heading, .tasks-heading, .premium-heading { align-items: flex-end; display: flex; gap: 18px; justify-content: space-between; margin-bottom: 24px; }
+    .dashboard-quick-link { background: white; border: 1px solid #b9c6d4; border-radius: 9px; color: var(--primary); font-size: 13px; font-weight: 800; padding: 10px 14px; white-space: nowrap; }
+    .dashboard-quick-link:hover { border-color: var(--accent); color: var(--accent); }
+    .welcome-panel { align-items: center; background: #eaf6f4; border: 1px solid #b9e3dc; border-radius: 12px; color: #17433f; display: flex; gap: 15px; margin-bottom: 22px; padding: 15px 17px; }
+    .welcome-panel-mark { align-items: center; background: #c6f0e9; border-radius: 9px; color: var(--accent); display: flex; font-size: 14px; font-weight: 800; height: 32px; justify-content: center; width: 32px; }
+    .welcome-panel strong { display: block; font-size: 14px; }
+    .welcome-panel span { display: block; font-size: 13px; margin-top: 2px; }
+    .stats-row { gap: 18px; }
+    .stat-card { border: 1px solid #e6edf3; border-radius: 14px; box-shadow: none; padding: 21px 17px; text-align: left; }
+    .stat-card:hover { box-shadow: 0 12px 24px rgba(16,42,67,.07); transform: translateY(-1px); transition: .18s ease; }
+    .stat-val { font-size: 27px; letter-spacing: -.7px; }
+    .stat-label { font-size: 12px; font-weight: 700; margin-top: 5px; }
+    .card { border: 1px solid #e6edf3; border-radius: 14px; box-shadow: none; padding: 22px; }
+    .card-title { color: var(--primary); font-size: 16px; }
+    .membership-note { align-items: center; background: #fffbeb; border: 1px solid #f5df91; border-radius: 12px; color: #684d16; display: flex; gap: 16px; justify-content: space-between; margin-bottom: 22px; padding: 14px 16px; }
+    .membership-note strong { display: block; font-size: 14px; }
+    .membership-note span { display: block; font-size: 13px; margin-top: 2px; }
+    .membership-note button { background: #9a6518; border: 0; border-radius: 7px; color: white; font-size: 12px; font-weight: 800; padding: 8px 11px; white-space: nowrap; }
+    .tasks-heading { align-items: flex-start; }
+    .task-explore-note { background: #fff; border: 1px solid #dbe4ee; border-radius: 10px; color: #53657b; font-size: 12px; max-width: 330px; padding: 11px 13px; }
+    .sample-task-section { background: #f7fafc; border: 1px solid #dbe4ee; border-radius: 14px; margin-top: 22px; padding: 20px; }
+    .sample-task-heading { align-items: baseline; display: flex; flex-wrap: wrap; gap: 9px; justify-content: space-between; margin-bottom: 15px; }
+    .sample-task-heading h3 { color: var(--primary); font-family: 'Poppins', sans-serif; font-size: 16px; }
+    .sample-task-heading span { color: var(--muted); font-size: 11px; }
+    .sample-task-grid { display: grid; gap: 11px; grid-template-columns: repeat(5, minmax(150px, 1fr)); }
+    .sample-task { background: #fff; border: 1px solid #e1eaf2; border-radius: 10px; min-height: 115px; padding: 14px; }
+    .sample-task strong { color: var(--primary); display: block; font-size: 13px; line-height: 1.3; margin-bottom: 6px; }
+    .sample-task p { color: var(--muted); font-size: 11px; line-height: 1.45; }
+    .task-filter-row { display: flex; gap: 9px; margin: 0 0 19px; overflow-x: auto; padding-bottom: 4px; }
+    .task-filter { background: #fff; border: 1px solid #d5e0e9; border-radius: 999px; color: #52647b; flex: 0 0 auto; font-size: 12px; font-weight: 800; padding: 8px 12px; }
+    .task-filter:hover, .task-filter.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+    .tasks-grid { gap: 18px; }
+    .task-card { border: 1px solid #e2eaf2; border-left: 4px solid var(--accent); border-radius: 14px; box-shadow: none; min-height: 268px; padding: 20px; }
+    .task-card.premium { border-left-color: var(--warning); }
+    .task-card.locked { background: #fffdf8; opacity: 1; }
+    .task-card:hover { box-shadow: 0 13px 28px rgba(16,42,67,.08); transform: translateY(-2px); transition: .18s ease; }
+    .task-meta { align-items: center; display: flex; gap: 8px; justify-content: space-between; margin-bottom: 12px; }
+    .task-category { background: #edf7f6; border-radius: 999px; color: var(--accent); font-size: 10px; font-weight: 800; padding: 5px 8px; }
+    .task-badge { font-size: 10px; padding: 5px 8px; }
+    .task-title { font-size: 16px; letter-spacing: -.2px; }
+    .task-desc { min-height: 56px; }
+    .task-reward { color: var(--primary); font-size: 24px; margin-top: auto; }
+    .btn-task { border-radius: 8px; min-height: 40px; }
+    .premium-hero { background: linear-gradient(135deg, #102a43, #174b67); border-radius: 16px; margin-bottom: 0; padding: 32px; }
+    .premium-hero h2 { font-size: 30px; letter-spacing: -.7px; }
+    .premium-price { color: #a7f3d0; }
+    .premium-layout { display: grid; gap: 22px; grid-template-columns: 1fr .92fr; margin-bottom: 22px; }
+    .premium-detail-card { background: #f7fafc; border: 1px solid #dbe4ee; border-radius: 16px; padding: 28px; }
+    .premium-detail-card h3 { color: var(--primary); font-family: 'Poppins', sans-serif; font-size: 21px; margin-bottom: 10px; }
+    .membership-fact { border-bottom: 1px solid #e2eaf2; display: flex; font-size: 14px; justify-content: space-between; padding: 12px 0; }
+    .membership-fact span { color: var(--muted); }
+    .membership-fact strong { color: var(--primary); text-align: right; }
+    .membership-support { background: #eaf6f4; border: 1px solid #b9e3dc; border-radius: 10px; color: #17433f; font-size: 13px; margin-top: 19px; padding: 13px; }
+    .membership-support a { color: var(--accent); font-weight: 800; text-decoration: underline; }
+    .payment-card { max-width: 700px; }
+    .wallet-box { align-items: flex-start; background: #eff8ff; border: 1px solid #b2ddff; border-radius: 10px; display: flex; gap: 12px; justify-content: space-between; margin: 15px 0 18px; padding: 14px; }
+    .wallet-box-label { color: #175cd3; font-size: 12px; font-weight: 800; margin-bottom: 5px; }
+    .wallet-address { color: #173f66; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 12px; font-weight: 700; overflow-wrap: anywhere; }
+    .copy-wallet { background: var(--primary); border: 0; border-radius: 7px; color: white; flex: 0 0 auto; font-size: 12px; font-weight: 800; padding: 8px 10px; }
+    .copy-wallet:hover { background: var(--secondary); }
+    .payment-help { color: var(--muted); font-size: 12px; line-height: 1.6; margin: -2px 0 17px; }
+    .alert { border-radius: 9px; }
+    .modal-box { border-radius: 16px; }
+    .wa-float { align-items: center; border-radius: 999px; display: flex; font-size: 12px; font-weight: 800; gap: 7px; height: 48px; justify-content: center; padding: 0 15px; width: auto; }
+    .wa-float::before { content: 'W'; font-size: 15px; font-weight: 800; line-height: 1; }
+
+    @media (max-width: 900px) {
+      .app-header { padding: 0 20px; }
+      .sidebar { width: 208px; }
+      .main { padding: 24px; }
+      .premium-layout { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .app-layout { display: block; }
+      .app-header { height: 64px; }
+      .app-header .user-email { display: none; }
+      .header-user { gap: 9px; }
+      .user-avatar { height: 34px; width: 34px; }
+      .btn-logout { min-height: 34px; padding: 6px 10px; }
+      .app-layout { min-height: calc(100vh - 110px); }
+      .sidebar { display: none; }
+      .mobile-nav { background: #fff; border-bottom: 1px solid var(--border); display: flex; gap: 5px; overflow-x: auto; padding: 8px 12px; }
+      .mobile-nav-item { background: #fff; border: 1px solid #dbe4ee; border-radius: 999px; color: #5c6b80; flex: 0 0 auto; font-size: 12px; font-weight: 800; padding: 7px 10px; }
+      .mobile-nav-item.active { background: #eaf6f4; border-color: #b9e3dc; color: var(--accent); }
+      .main { padding: 21px 16px 80px; }
+      .page-title { font-size: 25px; }
+      .dashboard-heading, .tasks-heading, .premium-heading { align-items: flex-start; flex-direction: column; margin-bottom: 18px; }
+      .dashboard-quick-link { width: 100%; }
+      .stats-row { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .stat-card { min-height: 112px; padding: 16px; }
+      .stat-val { font-size: 23px; }
+      .welcome-panel, .membership-note { align-items: flex-start; flex-direction: column; }
+      .membership-note button { width: 100%; }
+      .tasks-grid { grid-template-columns: 1fr; }
+      .sample-task-grid { grid-template-columns: 1fr 1fr; }
+      .task-explore-note { max-width: none; }
+      .wallet-box { flex-direction: column; }
+      .copy-wallet { width: 100%; }
+      .wa-float { border-radius: 50%; bottom: 17px; height: 52px; padding: 0; right: 17px; width: 52px; }
+      .wa-float span { display: none; }
+      .wa-float::before { font-size: 21px; }
+    }
+    @media (max-width: 420px) {
+      .app-header { padding: 0 14px; }
+      .app-header .logo { font-size: 21px; }
+      .user-name { max-width: 86px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .stats-row { grid-template-columns: 1fr; }
+      .sample-task-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -121,55 +267,97 @@
 </div>
 
 <div id="appWrapper" style="display:none;">
-  <header>
+  <header class="app-header">
     <div class="logo">Reward<span>Flow</span></div>
-    <div style="display:flex;align-items:center;gap:12px;">
+    <div class="header-user">
+      <div class="user-avatar" aria-hidden="true">RF</div>
       <div>
         <div class="user-name" id="userName">Loading...</div>
         <div class="user-email" id="userEmail"></div>
       </div>
       <button class="btn-logout" onclick="doLogout()">
         <span class="spin-sm" id="logoutSpin" style="display:none;"></span>
-        Sign Out
+        Sign out
       </button>
     </div>
   </header>
 
   <div class="app-layout">
-    <div class="sidebar">
-      <div class="sidebar-item active" data-page="dashboard" onclick="showPage('dashboard',this)">📊 Dashboard</div>
-      <div class="sidebar-item" data-page="tasks" onclick="showPage('tasks',this)">✅ Tasks</div>
-      <div class="sidebar-item" data-page="withdrawal" onclick="showPage('withdrawal',this)">💸 Withdraw</div>
-      <div class="sidebar-item" data-page="premium" onclick="showPage('premium',this)">⭐ Premium</div>
-      <div class="sidebar-item admin-only" id="adminNav" data-page="admin" onclick="showPage('admin',this)">🔧 Admin Panel</div>
-    </div>
+    <aside class="sidebar" aria-label="Account navigation">
+      <div class="sidebar-label">Workspace</div>
+      <button class="sidebar-item active" data-page="dashboard" onclick="showPage('dashboard',this)"><span class="nav-symbol">OV</span> Overview</button>
+      <button class="sidebar-item" data-page="tasks" onclick="showPage('tasks',this)"><span class="nav-symbol">TS</span> Tasks</button>
+      <button class="sidebar-item" data-page="withdrawal" onclick="showPage('withdrawal',this)"><span class="nav-symbol">WD</span> Withdraw</button>
+      <button class="sidebar-item" data-page="premium" onclick="showPage('premium',this)"><span class="nav-symbol">PR</span> Premium</button>
+      <button class="sidebar-item admin-only" id="adminNav" data-page="admin" onclick="showPage('admin',this)"><span class="nav-symbol">AD</span> Admin panel</button>
+    </aside>
+
+    <nav class="mobile-nav" aria-label="Mobile account navigation">
+      <button class="mobile-nav-item active" data-mobile-page="dashboard" onclick="showPage('dashboard',document.querySelector('[data-page=dashboard]'))">Overview</button>
+      <button class="mobile-nav-item" data-mobile-page="tasks" onclick="showPage('tasks',document.querySelector('[data-page=tasks]'))">Tasks</button>
+      <button class="mobile-nav-item" data-mobile-page="withdrawal" onclick="showPage('withdrawal',document.querySelector('[data-page=withdrawal]'))">Withdraw</button>
+      <button class="mobile-nav-item" data-mobile-page="premium" onclick="showPage('premium',document.querySelector('[data-page=premium]'))">Premium</button>
+    </nav>
 
     <div class="main">
 
       <div class="page active" id="page-dashboard">
-        <div class="page-title">My Dashboard</div>
+        <div class="dashboard-heading">
+          <div>
+            <div class="page-kicker">Account overview</div>
+            <div class="page-title">Your RewardFlow dashboard</div>
+            <p class="page-intro">Review your balances, task progress, membership access, and recent account activity in one place.</p>
+          </div>
+          <button class="dashboard-quick-link" onclick="showPage('tasks',document.querySelector('[data-page=tasks]'))">Browse available tasks</button>
+        </div>
+        <div class="welcome-panel">
+          <div class="welcome-panel-mark">i</div>
+          <div><strong>Start by exploring the platform.</strong><span>Basic members can review available tasks and see how the process works before deciding whether Premium access is useful.</span></div>
+        </div>
         <div class="stats-row">
           <div class="stat-card"><div class="stat-val green" id="statBalance">$0.00</div><div class="stat-label">Available Balance</div></div>
           <div class="stat-card"><div class="stat-val" id="statEarned">$0.00</div><div class="stat-label">Total Earned</div></div>
           <div class="stat-card"><div class="stat-val" id="statTasks">0</div><div class="stat-label">Tasks Completed</div></div>
           <div class="stat-card"><div class="stat-val" id="statPending">0</div><div class="stat-label">Pending Review</div></div>
+          <div class="stat-card"><div class="stat-val" id="statMembership">Basic</div><div class="stat-label">Membership Status</div></div>
         </div>
-        <div id="premiumBanner" style="display:none;" class="alert alert-warning">
-          ⭐ <strong>Upgrade to Premium</strong> — Unlock tasks paying up to $15 each for just $15 one-time!
-          <button onclick="showPage('premium',document.querySelector('[data-page=premium]'))" style="margin-left:12px;background:var(--warning);color:white;border:none;padding:4px 12px;border-radius:4px;font-weight:600;cursor:pointer;font-size:12px;">Upgrade Now</button>
+        <div id="premiumBanner" style="display:none;" class="membership-note">
+          <div><strong>Explore first. Upgrade only when you are ready.</strong><span>Premium is a one-time $15 membership that unlocks Premium task access for life. It is optional and has no monthly fee.</span></div>
+          <button onclick="showPage('premium',document.querySelector('[data-page=premium]'))">View membership</button>
         </div>
         <div class="card">
           <div class="card-title">Recent Activity</div>
-          <div id="recentActivity"><div style="text-align:center;padding:24px;color:var(--muted);font-size:14px;">No activity yet. Start completing tasks!</div></div>
+          <div id="recentActivity"><div style="text-align:center;padding:24px;color:var(--muted);font-size:14px;">No activity recorded yet. Browse available tasks to see current opportunities.</div></div>
         </div>
       </div>
 
       <div class="page" id="page-tasks">
-        <div class="page-title">Available Tasks</div>
+        <div class="tasks-heading">
+          <div><div class="page-kicker">Task opportunities</div><div class="page-title">Available Tasks</div><p class="page-intro">Choose a category to explore the current task list. Premium-only tasks are clearly labelled before you submit anything.</p></div>
+          <div class="task-explore-note"><strong>New here?</strong><br>Browse freely. You can review task types and requirements before deciding on Premium.</div>
+        </div>
         <div id="tasksAlert"></div>
+        <div class="task-filter-row" aria-label="Task categories">
+          <button type="button" class="task-filter active" onclick="filterAppTasks('All',this)">All tasks</button>
+          <button type="button" class="task-filter" onclick="filterAppTasks('Daily Tasks',this)">Daily Tasks</button>
+          <button type="button" class="task-filter" onclick="filterAppTasks('Social Media Tasks',this)">Social Media</button>
+          <button type="button" class="task-filter" onclick="filterAppTasks('Website Visits',this)">Website Visits</button>
+          <button type="button" class="task-filter" onclick="filterAppTasks('Surveys',this)">Surveys</button>
+          <button type="button" class="task-filter" onclick="filterAppTasks('Referrals',this)">Referrals</button>
+        </div>
         <div class="tasks-grid" id="tasksGrid">
           <div style="text-align:center;padding:40px;color:var(--muted);grid-column:1/-1;"><div class="spin-ring" style="margin:0 auto 12px;"></div>Loading tasks...</div>
         </div>
+        <section class="sample-task-section" aria-labelledby="sampleTasksTitle">
+          <div class="sample-task-heading"><h3 id="sampleTasksTitle">Example task previews</h3><span>Illustrative examples only — these are not active tasks.</span></div>
+          <div class="sample-task-grid">
+            <article class="sample-task"><strong>Daily Tasks</strong><p>Review a short guide and submit the requested completion note.</p></article>
+            <article class="sample-task"><strong>Social Media Tasks</strong><p>Provide feedback on approved content using the task instructions.</p></article>
+            <article class="sample-task"><strong>Website Visits</strong><p>Explore a site experience and answer a short set of questions.</p></article>
+            <article class="sample-task"><strong>Surveys</strong><p>Complete an approved questionnaire with accurate responses.</p></article>
+            <article class="sample-task"><strong>Referrals</strong><p>View the requirements for an active referral campaign when one is available.</p></article>
+          </div>
+        </section>
       </div>
 
       <div class="page" id="page-withdrawal">
@@ -226,40 +414,48 @@
       </div>
 
       <div class="page" id="page-premium">
-        <div class="page-title">Premium Membership</div>
+        <div class="premium-heading">
+          <div><div class="page-kicker">Optional membership</div><div class="page-title">Premium Membership</div><p class="page-intro">Clear terms, a one-time payment, and no monthly subscription. Upgrade only if Premium task access is useful to you.</p></div>
+        </div>
         <div id="premiumStatusAlert"></div>
         <div id="premiumUpgradeSection">
-          <div class="premium-hero">
-            <h2>Unlock Premium Access</h2>
-            <p style="opacity:0.85;margin-bottom:16px;">One-time activation. Earn more, withdraw sooner.</p>
-            <div class="premium-price">$15</div>
-            <ul class="premium-features">
-              <li>Access all premium tasks (up to $15 each)</li>
-              <li>Priority task allocation</li>
-              <li>Lower withdrawal threshold ($30 instead of $50)</li>
-              <li>Dedicated premium support</li>
-              <li>Lifetime access — pay once</li>
-            </ul>
-          </div>
-          <div class="card" style="max-width:540px;">
-            <div class="card-title">Submit Payment Proof</div>
-            <p style="color:var(--muted);font-size:13px;margin-bottom:16px;">Send $15 to our payment address, then upload your payment screenshot.</p>
-            <div class="alert alert-info" style="margin-bottom:16px;">
-              <strong>Payment Address:</strong><br>
-              PayPal: <strong>payments@rewardflow.com</strong><br>
-              Bitcoin: <strong id="btcAddress">bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</strong>
-              <button onclick="copyAddress()" style="margin-left:8px;background:var(--primary);color:white;border:none;padding:2px 8px;border-radius:4px;font-size:11px;cursor:pointer;">Copy</button>
+          <div class="premium-layout">
+            <div class="premium-hero">
+              <h2>Lifetime Premium access</h2>
+              <p style="opacity:.86;margin:10px 0 16px;">Premium opens the full range of Premium-only task opportunities and includes priority support. It is optional, and the decision is yours.</p>
+              <div class="premium-price">$15</div>
+              <ul class="premium-features">
+                <li>Access Premium-only task opportunities</li>
+                <li>Priority task allocation and review</li>
+                <li>Lower withdrawal threshold ($30 instead of $50)</li>
+                <li>Dedicated membership support</li>
+                <li>Lifetime access with no monthly fees</li>
+              </ul>
             </div>
+            <aside class="premium-detail-card">
+              <h3>Membership at a glance</h3>
+              <div class="membership-fact"><span>One-time payment</span><strong>$15</strong></div>
+              <div class="membership-fact"><span>Membership duration</span><strong>Lifetime</strong></div>
+              <div class="membership-fact"><span>Monthly subscription</span><strong>None</strong></div>
+              <div class="membership-fact"><span>Payment network</span><strong>USDT · TRON TRC20</strong></div>
+              <div class="membership-support">Need help before paying? Message support on <a href="https://wa.me/447379343980" target="_blank" rel="noopener">WhatsApp: +447379343980</a>.</div>
+            </aside>
+          </div>
+          <div class="card payment-card">
+            <div class="card-title">Payment and proof submission</div>
+            <p style="color:var(--muted);font-size:13px;margin:5px 0 0;">If you choose to join, send the one-time $15 payment using the network shown below, then submit the transaction reference and proof for review.</p>
+            <div class="wallet-box">
+              <div><div class="wallet-box-label">USDT (TRON TRC20) wallet address</div><div class="wallet-address" id="btcAddress">0x51f82ad5a4766279bc0da84085f67bad7d30</div></div>
+              <button type="button" class="copy-wallet" onclick="copyAddress()">Copy address</button>
+            </div>
+            <p class="payment-help">Please use the TRON TRC20 network only. Do not send funds via another network. Keep your transaction reference and upload a clear payment screenshot so the membership request can be reviewed.</p>
             <div id="premiumAlert"></div>
             <form id="premiumForm" onsubmit="submitPremiumRequest(event)">
               <div class="form-group">
-                <label class="form-label">Payment Method Used</label>
+                <label class="form-label">Payment method used</label>
                 <select id="premiumPayMethod" class="form-select" required>
                   <option value="">-- Select --</option>
-                  <option value="paypal">PayPal</option>
-                  <option value="bitcoin">Bitcoin</option>
-                  <option value="bank_transfer">Bank Transfer</option>
-                  <option value="other">Other</option>
+                  <option value="usdt_trc20">USDT (TRC20)</option>
                 </select>
               </div>
               <div class="form-group">
@@ -267,13 +463,13 @@
                 <input type="text" id="premiumTxId" class="form-input" placeholder="Transaction ID or reference" required>
               </div>
               <div class="form-group">
-                <label class="form-label">Payment Screenshot</label>
+                <label class="form-label">Payment screenshot</label>
                 <input type="file" id="premiumProof" class="form-input" accept="image/*" required>
-                <div class="form-help">Upload a screenshot of your payment confirmation</div>
+                <div class="form-help">Upload a clear screenshot of your payment confirmation.</div>
               </div>
               <button type="submit" class="btn-accent" id="premiumBtn" style="width:100%;">
                 <span class="spin-sm" id="premiumSpin" style="display:none;"></span>
-                Submit Premium Request
+                Submit membership request
               </button>
             </form>
           </div>
@@ -355,7 +551,7 @@
   </div>
 </div>
 
-<a href="https://wa.me/447379343980" class="wa-float" target="_blank">chat</a>
+<a href="https://wa.me/447379343980" class="wa-float" target="_blank" rel="noopener" aria-label="Chat with RewardFlow support on WhatsApp" title="Chat with RewardFlow support on WhatsApp"><span>WhatsApp support</span></a>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
@@ -365,6 +561,9 @@
   var sb;
   var currentUser = null;
   var currentProfile = null;
+  var appTasks = [];
+  var appTaskStatuses = {};
+  var activeAppTaskCategory = 'All';
 
   function init() {
     try { sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY); }
@@ -414,10 +613,17 @@
   function showApp() {
     hideLoading();
     document.getElementById('appWrapper').style.display = 'block';
-    document.getElementById('userName').textContent = (currentProfile && currentProfile.full_name) || (currentUser && currentUser.email) || 'User';
+    var displayName = (currentProfile && currentProfile.full_name) || (currentUser && currentUser.email) || 'User';
+    document.getElementById('userName').textContent = displayName;
     document.getElementById('userEmail').textContent = (currentUser && currentUser.email) || '';
+    var avatar = document.querySelector('.user-avatar');
+    if (avatar) avatar.textContent = String(displayName).trim().slice(0, 2).toUpperCase() || 'RF';
     if (currentProfile && currentProfile.is_admin) document.getElementById('adminNav').classList.add('show');
-    if (currentProfile && !currentProfile.is_premium) document.getElementById('premiumBanner').style.display = 'block';
+    var isPremium = !!(currentProfile && currentProfile.is_premium);
+    var membership = document.getElementById('statMembership');
+    if (membership) membership.textContent = isPremium ? 'Premium' : 'Basic (Free)';
+    var premiumBanner = document.getElementById('premiumBanner');
+    if (premiumBanner) premiumBanner.style.display = isPremium ? 'none' : 'flex';
     loadDashboard();
   }
 
@@ -427,9 +633,12 @@
   window.showPage = function(name, el) {
     document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
     document.querySelectorAll('.sidebar-item').forEach(function(s) { s.classList.remove('active'); });
+    document.querySelectorAll('.mobile-nav-item').forEach(function(s) { s.classList.remove('active'); });
     var page = document.getElementById('page-' + name);
     if (page) page.classList.add('active');
     if (el) el.classList.add('active');
+    var mobileItem = document.querySelector('[data-mobile-page="' + name + '"]');
+    if (mobileItem) mobileItem.classList.add('active');
     if (name === 'dashboard') loadDashboard();
     if (name === 'tasks') loadTasks();
     if (name === 'withdrawal') loadWithdrawal();
@@ -438,23 +647,84 @@
   };
 
   function loadDashboard() {
-    if (!currentProfile) return;
+    if (!currentProfile || !currentUser) return;
     document.getElementById('statBalance').textContent = '$' + parseFloat(currentProfile.balance || 0).toFixed(2);
     document.getElementById('statEarned').textContent = '$' + parseFloat(currentProfile.total_earned || 0).toFixed(2);
-    sb.from('task_completions').select('id,status,created_at,tasks(title,reward)').eq('user_id', currentUser.id).order('created_at', { ascending: false }).limit(10)
+    var membership = document.getElementById('statMembership');
+    if (membership) membership.textContent = currentProfile.is_premium ? 'Premium' : 'Basic (Free)';
+    sb.from('task_completions').select('id,status,created_at,tasks(title,reward)').eq('user_id', currentUser.id).order('created_at', { ascending: false }).limit(500)
       .then(function(r) {
         if (r.error) return;
-        var c = r.data || [];
-        document.getElementById('statTasks').textContent = c.filter(function(x) { return x.status === 'approved'; }).length;
-        document.getElementById('statPending').textContent = c.filter(function(x) { return x.status === 'pending'; }).length;
-        if (c.length === 0) { document.getElementById('recentActivity').innerHTML = '<div style="text-align:center;padding:24px;color:var(--muted);font-size:14px;">No activity yet. Start completing tasks!</div>'; return; }
-        document.getElementById('recentActivity').innerHTML = c.map(function(x) {
+        var completions = r.data || [];
+        document.getElementById('statTasks').textContent = completions.filter(function(x) { return x.status === 'approved'; }).length;
+        document.getElementById('statPending').textContent = completions.filter(function(x) { return x.status === 'pending'; }).length;
+        var recent = completions.slice(0, 8);
+        if (recent.length === 0) {
+          document.getElementById('recentActivity').innerHTML = '<div style="text-align:center;padding:24px;color:var(--muted);font-size:14px;">No activity recorded yet. Browse available tasks to see current opportunities.</div>';
+          return;
+        }
+        document.getElementById('recentActivity').innerHTML = recent.map(function(x) {
           var bc = x.status === 'approved' ? 'badge-approved' : x.status === 'rejected' ? 'badge-rejected' : 'badge-pending';
-          return '<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);">' +
-            '<div><div style="font-weight:600;font-size:14px;">' + esc(x.tasks ? x.tasks.title : 'Task') + '</div><div style="font-size:12px;color:var(--muted);">' + fmtDate(x.created_at) + '</div></div>' +
-            '<div style="display:flex;align-items:center;gap:12px;"><span style="font-weight:700;color:var(--accent);">+$' + parseFloat(x.tasks ? x.tasks.reward : 0).toFixed(2) + '</span><span class="badge ' + bc + '">' + x.status + '</span></div></div>';
+          var reward = x.tasks ? parseFloat(x.tasks.reward || 0).toFixed(2) : '0.00';
+          return '<div style="display:flex;justify-content:space-between;align-items:center;gap:14px;padding:13px 0;border-bottom:1px solid var(--border);">' +
+            '<div><div style="font-weight:700;font-size:14px;color:var(--primary);">' + esc(x.tasks ? x.tasks.title : 'Task submission') + '</div><div style="font-size:12px;color:var(--muted);">' + fmtDate(x.created_at) + '</div></div>' +
+            '<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:flex-end;"><span style="font-weight:800;color:var(--accent);">$' + reward + '</span><span class="badge ' + bc + '">' + esc(x.status) + '</span></div></div>';
         }).join('');
       });
+  }
+
+  function appTaskCategory(task) {
+    var text = ((task.title || '') + ' ' + (task.description || '')).toLowerCase();
+    if (/(referr|invite)/.test(text)) return 'Referrals';
+    if (/(survey|feedback|questionnaire|market)/.test(text)) return 'Surveys';
+    if (/(website|web site|shopping|food delivery|e-book|ebook|browse)/.test(text)) return 'Website Visits';
+    if (/(social|youtube|music|google review|post|video)/.test(text)) return 'Social Media Tasks';
+    return 'Daily Tasks';
+  }
+
+  function renderAppTasks() {
+    var grid = document.getElementById('tasksGrid');
+    if (!grid) return;
+    var visibleTasks = appTasks.filter(function(task) {
+      return activeAppTaskCategory === 'All' || appTaskCategory(task) === activeAppTaskCategory;
+    });
+    if (!visibleTasks.length) {
+      grid.innerHTML = '<div style="text-align:center;padding:40px;color:var(--muted);grid-column:1/-1;">No matching tasks are currently available in this category. Please browse another category or check back later.</div>';
+      return;
+    }
+    grid.innerHTML = '';
+    visibleTasks.forEach(function(t) {
+      var isPrem = !!t.is_premium;
+      var isLocked = isPrem && currentProfile && !currentProfile.is_premium;
+      var status = appTaskStatuses[t.id];
+      var isDone = status === 'approved';
+      var isPend = status === 'pending';
+      var card = document.createElement('article');
+      card.className = 'task-card' + (isPrem ? ' premium' : '') + (isLocked ? ' locked' : '');
+      var badge = isDone ? '<span class="task-badge badge-done">Completed</span>' :
+        isPend ? '<span class="task-badge badge-pending-task">Pending review</span>' :
+        isPrem ? '<span class="task-badge badge-premium">Premium</span>' :
+        '<span class="task-badge badge-free">Open task</span>';
+      var reward = parseFloat(t.reward || 0);
+      card.innerHTML = '<div class="task-meta"><span class="task-category">' + esc(appTaskCategory(t)) + '</span>' + badge + '</div>' +
+        '<div class="task-title">' + esc(t.title) + '</div>' +
+        '<div class="task-desc">' + esc(t.description || 'Review the task instructions before submitting work.') + '</div>' +
+        '<div class="task-reward">$' + (isFinite(reward) ? reward.toFixed(2) : '0.00') + '</div>';
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'btn-task' + ((!isDone && !isPend && isPrem && !isLocked) ? ' premium-btn' : '');
+      if (isDone) { button.textContent = 'Completed'; button.disabled = true; }
+      else if (isPend) { button.textContent = 'Pending review'; button.disabled = true; }
+      else if (isLocked) {
+        button.textContent = 'Learn about Premium';
+        button.addEventListener('click', function() { window.showPage('premium', document.querySelector('[data-page=premium]')); });
+      } else {
+        button.textContent = 'Start task';
+        button.addEventListener('click', function() { window.openTaskModal(t.id, t.title || 'Task', t.description || '', t.reward || 0); });
+      }
+      card.appendChild(button);
+      grid.appendChild(card);
+    });
   }
 
   function loadTasks() {
@@ -462,40 +732,25 @@
     grid.innerHTML = '<div style="text-align:center;padding:40px;color:var(--muted);grid-column:1/-1;"><div class="spin-ring" style="margin:0 auto 12px;"></div>Loading tasks...</div>';
     sb.from('task_completions').select('task_id,status').eq('user_id', currentUser.id)
       .then(function(cr) {
-        var done = {};
-        if (!cr.error && cr.data) cr.data.forEach(function(c) { done[c.task_id] = c.status; });
+        appTaskStatuses = {};
+        if (!cr.error && cr.data) cr.data.forEach(function(c) { appTaskStatuses[c.task_id] = c.status; });
         sb.from('tasks').select('*').eq('is_active', true).order('id')
           .then(function(tr) {
-            if (tr.error) { grid.innerHTML = '<div style="text-align:center;padding:40px;color:var(--muted);grid-column:1/-1;">Could not load tasks.</div>'; return; }
-            var tasks = tr.data || [];
-            if (!tasks.length) { grid.innerHTML = '<div style="text-align:center;padding:40px;color:var(--muted);grid-column:1/-1;">No tasks available.</div>'; return; }
-            grid.innerHTML = '';
-            tasks.forEach(function(t) {
-              var isPrem = t.is_premium;
-              var isLocked = isPrem && currentProfile && !currentProfile.is_premium;
-              var status = done[t.id];
-              var isDone = status === 'approved';
-              var isPend = status === 'pending';
-              var card = document.createElement('div');
-              card.className = 'task-card' + (isPrem ? ' premium' : '') + (isLocked ? ' locked' : '');
-              var badge = isDone ? '<span class="task-badge badge-done">Completed</span>' :
-                isPend ? '<span class="task-badge badge-pending-task">Pending</span>' :
-                isPrem ? '<span class="task-badge badge-premium">Premium</span>' :
-                '<span class="task-badge badge-free">Free</span>';
-              var btnTxt = isDone ? 'Completed' : isPend ? 'Pending Review' : isLocked ? 'Premium Required' : 'Start Task';
-              var btnCls = isDone || isPend ? '' : isLocked ? '' : isPrem ? 'premium-btn' : '';
-              var btnDis = isDone || isPend || isLocked;
-              var onclick = (!btnDis) ? 'onclick="openTaskModal(' + t.id + ',\'' + esc(t.title).replace(/'/g,'&#39;') + '\',\'' + esc(t.description||'').replace(/'/g,'&#39;') + '\',' + t.reward + ')"' : '';
-              card.innerHTML = badge +
-                '<div class="task-title">' + esc(t.title) + '</div>' +
-                '<div class="task-desc">' + esc(t.description || '') + '</div>' +
-                '<div class="task-reward">$' + parseFloat(t.reward).toFixed(2) + '</div>' +
-                '<button class="btn-task ' + btnCls + '" ' + (btnDis ? 'disabled' : onclick) + '>' + btnTxt + '</button>';
-              grid.appendChild(card);
-            });
-          });
-      });
+            if (tr.error) { grid.innerHTML = '<div style="text-align:center;padding:40px;color:var(--muted);grid-column:1/-1;">Tasks could not be loaded at this time. Please try again shortly.</div>'; return; }
+            appTasks = tr.data || [];
+            renderAppTasks();
+          })
+          .catch(function() { grid.innerHTML = '<div style="text-align:center;padding:40px;color:var(--muted);grid-column:1/-1;">Tasks could not be loaded at this time. Please try again shortly.</div>'; });
+      })
+      .catch(function() { grid.innerHTML = '<div style="text-align:center;padding:40px;color:var(--muted);grid-column:1/-1;">Tasks could not be loaded at this time. Please try again shortly.</div>'; });
   }
+
+  window.filterAppTasks = function(category, button) {
+    activeAppTaskCategory = category;
+    document.querySelectorAll('.task-filter').forEach(function(filter) { filter.classList.remove('active'); });
+    if (button) button.classList.add('active');
+    renderAppTasks();
+  };
 
   window.openTaskModal = function(id, title, desc, reward) {
     document.getElementById('taskModalId').value = id;
@@ -531,7 +786,7 @@
           closeModal('task');
           loadTasks();
           loadDashboard();
-          showEl('tasksAlert', 'Task submitted! It will be reviewed within 24 hours.', 'success');
+            showEl('tasksAlert', 'Task submitted. It is now pending review.', 'success');
           setTimeout(function() { clearEl('tasksAlert'); }, 5000);
         }).catch(function(e) { showEl('taskModalAlert', e.message, 'error'); setLoad(btn, spin, false); });
     }
@@ -592,7 +847,7 @@
             currentProfile.balance = newBal;
             document.getElementById('withdrawBalance').textContent = '$' + newBal.toFixed(2);
             document.getElementById('statBalance').textContent = '$' + newBal.toFixed(2);
-            showEl('withdrawAlert', 'Withdrawal request submitted! Processing within 24-48 hours.', 'success');
+            showEl('withdrawAlert', 'Withdrawal request submitted. You can track its status in Withdrawal History.', 'success');
             document.getElementById('withdrawForm').reset();
             toggleWithdrawFields();
             loadWithdrawal();
@@ -605,21 +860,44 @@
     var sa = document.getElementById('premiumStatusAlert');
     var us = document.getElementById('premiumUpgradeSection');
     if (currentProfile && currentProfile.is_premium) {
-      sa.className = 'alert alert-success'; sa.textContent = 'You are a Premium member! All premium tasks are unlocked.'; sa.style.display = 'block';
-      us.style.display = 'none'; return;
+      sa.className = 'alert alert-success';
+      sa.textContent = 'Premium membership is active. Premium task opportunities are available in the Tasks section.';
+      sa.style.display = 'block';
+      us.style.display = 'none';
+      return;
     }
     sb.from('premium_requests').select('*').eq('user_id', currentUser.id).eq('status', 'pending').limit(1)
       .then(function(r) {
         if (!r.error && r.data && r.data.length > 0) {
-          sa.className = 'alert alert-info'; sa.textContent = 'Your premium request is pending review. We will activate it within 1-2 hours.'; sa.style.display = 'block';
+          sa.className = 'alert alert-info';
+          sa.textContent = 'Your membership request has been received and is pending review. Your access will be updated after verification.';
+          sa.style.display = 'block';
           us.style.display = 'none';
-        } else { sa.style.display = 'none'; us.style.display = 'block'; }
+        } else {
+          sa.style.display = 'none';
+          us.style.display = 'block';
+        }
       }).catch(function() { us.style.display = 'block'; });
   }
 
   window.copyAddress = function() {
-    var addr = document.getElementById('btcAddress').textContent;
-    if (navigator.clipboard) navigator.clipboard.writeText(addr).then(function() { showEl('premiumAlert', 'Address copied!', 'success'); setTimeout(function() { clearEl('premiumAlert'); }, 2000); });
+    var node = document.getElementById('btcAddress');
+    var addr = node ? node.textContent.trim() : '';
+    if (!addr) return;
+    function done() { showEl('premiumAlert', 'Wallet address copied.', 'success'); setTimeout(function() { clearEl('premiumAlert'); }, 2000); }
+    function fallback() {
+      var textarea = document.createElement('textarea');
+      textarea.value = addr;
+      textarea.setAttribute('readonly', '');
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try { document.execCommand('copy'); done(); } catch (e) { showEl('premiumAlert', 'Please copy the wallet address manually.', 'error'); }
+      document.body.removeChild(textarea);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(addr).then(done).catch(fallback);
+    else fallback();
   };
 
   window.submitPremiumRequest = function(event) {
